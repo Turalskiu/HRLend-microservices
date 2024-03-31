@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+option csharp_namespace = "HRApi.Domain.GRPC.CopyingDataGRPC";
+
+package CopyingData;
+
+
+service CopyingData {
+  rpc CopyProfession (Id) returns (ProfessionCopy);
+  rpc CopyCompetence (CompetenceId) returns (CompetenceCopy);
+  rpc CopySkill (SkillId) returns (SkillCopy);
+}
+
+
+message ProfessionCopy{
+	string title = 1;
+	repeated Competence competencies = 2;
+}
+
+message CompetenceCopy{
+	string title = 1;
+	repeated Skill skills = 2;
+}
+
+message SkillCopy{
+	string title = 1;
+	string test_module_link = 2;
+}
+
+message Competence{
+	string title = 1;
+	int32  competence_need = 2;
+	repeated Skill skills = 3;
+}
+
+message Skill{
+	string title = 1;
+	string test_module_link = 2;
+	int32  skill_need = 3;
+}
+
+
+message Id {
+  string id = 1;
+}
+
+message CompetenceId {
+  string profession_id = 1;
+  string competence_title = 2;
+}
+
+message SkillId {
+  string profession_id = 1;
+  string competence_title = 2;
+  string skill_title = 3;
+}

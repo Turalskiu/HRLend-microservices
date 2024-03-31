@@ -1,0 +1,8 @@
+﻿<html>
+	<body style="font-size: 24px; display: flex; justify-content: center; align-items: center;">
+              <div style="border: 1px solid #335699; padding: 10px; background-color: #E6F2FF; width: 90%;">
+              	<p style="text-align: center;">{subject}</p>
+              	<h2 style="font-size: 46px; text-align: center;">{activationLink}</h2>
+	       </div>
+	</body>
+</html>
