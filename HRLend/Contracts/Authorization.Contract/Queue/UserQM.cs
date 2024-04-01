@@ -1,4 +1,4 @@
-﻿namespace TestApi.Domain.QueueMessage.Auth
+﻿namespace Contracts.Authorization.Queue
 {
     public class UserQM
     {
@@ -9,8 +9,7 @@
         public string? UserPhoto { get; set; }
     }
 
-    public enum USER_MESSAGE_TYPE
-    {
+    public enum USER_MESSAGE_TYPE{
         ADD = 1,
         UPDATE_USERNAME = 2,
         UPDATE_PHOTO = 3

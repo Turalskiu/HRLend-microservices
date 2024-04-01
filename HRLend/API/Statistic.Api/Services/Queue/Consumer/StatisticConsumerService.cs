@@ -2,7 +2,7 @@
 using RabbitMQ.Client;
 using StatisticApi.Repository.DocumentDB;
 using System.Text;
-using StatisticApi.Domain.QueueMessage.Statistic;
+using Contracts.Test.Queue;
 using System.Text.Json;
 using StatisticApi.Domain;
 

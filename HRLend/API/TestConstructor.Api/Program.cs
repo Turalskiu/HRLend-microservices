@@ -1,5 +1,4 @@
 using HRApi.Authorization;
-using HRApi.Models.QueueMessage;
 using HRApi.Repository.gRPC;
 using HRApi.Repository.SqlDB;
 using HRApi.Services;

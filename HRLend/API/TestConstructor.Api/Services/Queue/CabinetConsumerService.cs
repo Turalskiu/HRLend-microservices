@@ -1,13 +1,9 @@
-﻿
-using RabbitMQ.Client.Events;
+﻿using RabbitMQ.Client.Events;
 using RabbitMQ.Client;
 using System.Text;
-using HRApi.Models.QueueMessage;
+using Contracts.Authorization.Queue;
 using System.Text.Json;
-using System.Runtime.CompilerServices;
 using HRApi.Repository.SqlDB;
-using HRApi.Domain.Auth;
-using System.Text.RegularExpressions;
 
 namespace HRApi.Services.Queue
 {

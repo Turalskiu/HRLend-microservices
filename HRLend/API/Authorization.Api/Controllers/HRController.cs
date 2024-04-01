@@ -3,13 +3,12 @@ using AuthorizationApi.Models.DTO.Session;
 using AuthorizationApi.Models;
 using AuthorizationApi.Repository;
 using AuthorizationApi.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using AuthorizationApi.Models.DTO.Request;
 using Swashbuckle.AspNetCore.Annotations;
 using AuthorizationApi.Models.DTO.Response.RegistrationTokenResponse;
 using AuthorizationApi.Services.Queue;
-using AuthorizationApi.Models.QueueMessage;
+using Contracts.Authorization.Queue;
 
 namespace AuthorizationApi.Controllers
 {

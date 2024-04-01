@@ -4,9 +4,7 @@ using System.Text;
 using System.Text.Json;
 using TestApi.Repository.SqlDB;
 using TestApi.Domain;
-using TestApi.Domain.Auth;
-using MongoDB.Driver.Core.Configuration;
-using TestApi.Domain.QueueMessage.Auth;
+using Contracts.Authorization.Queue;
 
 namespace TestApi.Services.Queue.Consumer
 {

@@ -1,9 +1,4 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
-using MongoDB.Bson;
-using System.Xml.Linq;
-using TestApi.Domain.GRPC.TemplateGRPC;
-
-namespace TestApi.Domain.QueueMessage.Statistic
+﻿namespace Contracts.Test.Queue
 {
 
     public class UserStatisticQM

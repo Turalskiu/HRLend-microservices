@@ -11,7 +11,7 @@ using TestApi.Repository.GRPC;
 using TestApi.Repository.SqlDB;
 using TestApi.Services;
 using DocumentDB = TestApi.Repository.DocumentDB;
-using TestApi.Domain.QueueMessage.Statistic;
+using Contracts.Test.Queue;
 using TestApi.Services.Queue.Publisher;
 
 

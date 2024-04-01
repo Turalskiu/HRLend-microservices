@@ -1,8 +1,7 @@
 ﻿using RabbitMQ.Client;
 using System.Text;
 using System.Text.Json;
-using TestApi.Domain.QueueMessage.Auth;
-using TestApi.Domain.QueueMessage.Statistic;
+using Contracts.Test.Queue;
 
 namespace TestApi.Services.Queue.Publisher
 {

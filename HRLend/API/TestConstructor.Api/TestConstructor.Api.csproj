@@ -24,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Contracts\Authorization.Contract\Authorization.Contract.csproj" />
     <ProjectReference Include="..\..\Helpers\Helpers.csproj" />
   </ItemGroup>
 

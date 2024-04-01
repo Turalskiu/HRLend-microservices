@@ -1,12 +1,4 @@
-﻿using AuthorizationApi.Models.DTO.Request;
-using AuthorizationApi.Models.DTO.Response;
-using AuthorizationApi.Models.DTO.Session;
-using AuthorizationApi.Models;
-using AuthorizationApi.Settings;
-using Microsoft.Extensions.Options;
-using AuthorizationApi.Repository;
-using AuthorizationApi.Utils;
-using AuthorizationApi.Models.QueueMessage;
+﻿using Contracts.Authorization.Queue;
 using RabbitMQ.Client;
 using System.Text;
 using System.Text.Json;

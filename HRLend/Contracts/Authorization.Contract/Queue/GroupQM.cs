@@ -1,4 +1,4 @@
-﻿namespace AuthorizationApi.Models.QueueMessage
+﻿namespace Contracts.Authorization.Queue
 {
     public class GroupQM
     {

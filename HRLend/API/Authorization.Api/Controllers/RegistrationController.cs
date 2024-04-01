@@ -2,7 +2,7 @@
 using AuthorizationApi.Models;
 using AuthorizationApi.Models.DTO.Request;
 using AuthorizationApi.Models.DTO.Session;
-using AuthorizationApi.Models.QueueMessage;
+using Contracts.Authorization.Queue;
 using AuthorizationApi.Repository;
 using AuthorizationApi.Services;
 using AuthorizationApi.Services.Queue;
