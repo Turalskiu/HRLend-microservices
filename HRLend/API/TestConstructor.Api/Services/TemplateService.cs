@@ -1,5 +1,5 @@
 ﻿using Grpc.Core;
-using HRApi.Domain.GRPC.TemplateGRPC;
+using Contracts.TestConstructor.GRPC.Template;
 using HRApi.Repository.SqlDB;
 
 

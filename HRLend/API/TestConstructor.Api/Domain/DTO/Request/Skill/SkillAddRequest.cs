@@ -1,4 +1,4 @@
-﻿using HRApi.Domain.GRPC.TestModuleGRPC;
+﻿using Contracts.TestGenerator.GRPC.TestModule;
 
 namespace HRApi.Domain.DTO.Request.Skill
 {

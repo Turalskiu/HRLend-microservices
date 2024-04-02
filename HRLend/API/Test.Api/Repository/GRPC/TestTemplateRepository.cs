@@ -1,6 +1,5 @@
 ﻿using Grpc.Net.Client;
-using TestApi.Domain.GRPC.TemplateGRPC;
-
+using Contracts.TestConstructor.GRPC.Template;
 
 
 namespace TestApi.Repository.GRPC

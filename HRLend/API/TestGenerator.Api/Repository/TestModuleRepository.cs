@@ -1,6 +1,6 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Driver;
-using TestGeneratorApi.Domain.GRPC.TestModuleGRPC;
+using Contracts.TestGenerator.GRPC.TestModule;
 
 
 

@@ -1,5 +1,5 @@
 ﻿using Grpc.Net.Client;
-using HRApi.Domain.GRPC.CopyingDataGRPC;
+using Contracts.KnowledgeBase.GRPC.CopyingData;
 
 
 namespace HRApi.Repository.gRPC

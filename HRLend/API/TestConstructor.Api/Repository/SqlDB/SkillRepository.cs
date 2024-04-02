@@ -1,6 +1,6 @@
 ﻿using HRApi.Domain;
 using HRApi.Domain.DTO;
-using CD_GRPC = HRApi.Domain.GRPC.CopyingDataGRPC;
+using CD_GRPC = Contracts.KnowledgeBase.GRPC.CopyingData;
 using Helpers.Db.Postgres;
 using Npgsql;
 using NpgsqlTypes;

@@ -1,5 +1,5 @@
 ﻿
-namespace TestGeneratorApi.Domain.GRPC.TestGeneratorGRPC
+namespace Contracts.TestGenerator.GRPC.TestGenerator
 {
     public partial class Test
     {

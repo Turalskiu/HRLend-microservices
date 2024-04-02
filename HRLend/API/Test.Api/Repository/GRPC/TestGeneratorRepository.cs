@@ -1,5 +1,5 @@
 ﻿using Grpc.Net.Client;
-using TestApi.Domain.GRPC.TestGeneratorGRPC;
+using Contracts.TestGenerator.GRPC.TestGenerator;
 
 
 namespace TestApi.Repository.GRPC

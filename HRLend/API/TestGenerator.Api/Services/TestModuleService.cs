@@ -1,5 +1,5 @@
 ﻿using Grpc.Core;
-using TestGeneratorApi.Domain.GRPC.TestModuleGRPC;
+using Contracts.TestGenerator.GRPC.TestModule;
 using TestGeneratorApi.Repository;
 
 

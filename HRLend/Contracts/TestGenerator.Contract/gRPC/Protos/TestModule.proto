@@ -1,8 +1,10 @@
+
 syntax = "proto3";
 import "google/protobuf/wrappers.proto";
-option csharp_namespace = "HRApi.Domain.GRPC.TestModuleGRPC";
+option csharp_namespace = "Contracts.TestGenerator.GRPC.TestModule";
 
 package TestModule;
+
 
 service TestModule {
   rpc GetTestModule (Link) returns (Module);
@@ -62,3 +64,4 @@ message Module {
   repeated Question questions = 5;
   repeated Recommendation recommendations = 6;
 }
+

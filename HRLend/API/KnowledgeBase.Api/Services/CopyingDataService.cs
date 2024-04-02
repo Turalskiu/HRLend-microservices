@@ -1,6 +1,5 @@
 ﻿using Grpc.Core;
-using KnowledgeBaseApi.Domain.GRPC.CopyingDataGRPC;
-using KnowledgeBaseApi.Repository;
+using Contracts.KnowledgeBase.GRPC.CopyingData;
 using KnowledgeBaseApi.Repository.DocumentDB;
 
 

@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option csharp_namespace = "TestApi.Domain.GRPC.TestGeneratorGRPC";
+option csharp_namespace = "Contracts.TestGenerator.GRPC.TestGenerator";
 
 package TestGenerator;
 
@@ -70,8 +70,6 @@ message ParamForTestGenerator {
   bool is_timer = 5;
   bool is_recommend_materials = 6;
 }
-
-
 
 
 

@@ -1,6 +1,4 @@
 using KnowledgeBaseApi.Authorization;
-using KnowledgeBaseApi.Domain.GRPC.CopyingDataGRPC;
-using KnowledgeBaseApi.Repository;
 using KnowledgeBaseApi.Repository.DocumentDB;
 using KnowledgeBaseApi.Services;
 using KnowledgeBaseApi.Settings;

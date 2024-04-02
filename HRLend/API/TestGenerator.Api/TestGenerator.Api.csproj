@@ -9,11 +9,6 @@
 	<NoWarn>$(NoWarn);1591</NoWarn>
   </PropertyGroup>
 
-    <ItemGroup>
-	    <Protobuf Include="Protos\TestGenerator.proto" GrpcServices="Server" />
-	    <Protobuf Include="Protos\TestModule.proto" GrpcServices="Server" />
-    </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="Grpc.AspNetCore" Version="2.62.0" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.0" />
@@ -24,7 +19,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Contracts\TestGenerator.Contract\TestGenerator.Contract.csproj" />
     <ProjectReference Include="..\..\Helpers\Helpers.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Domain\" />
   </ItemGroup>
 
 </Project>

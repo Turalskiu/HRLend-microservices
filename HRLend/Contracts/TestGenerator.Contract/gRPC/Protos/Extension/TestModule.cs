@@ -1,13 +1,17 @@
-﻿namespace TestGeneratorApi.Domain.GRPC.TestModuleGRPC
+﻿
+
+namespace Contracts.TestGenerator.GRPC.TestModule
 {
+
     public partial class Module
     {
-        // Добавьте явные свойства с правамиset для списка questions
+        // Добавьте явные свойства с правами set для списка questions
         public List<Question> QuestionsList
         {
             get { return questions_.ToList(); }
-            set { 
-                questions_.Clear(); 
+            set
+            {
+                questions_.Clear();
                 questions_.Add(value);
             }
         }

@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option csharp_namespace = "KnowledgeBaseApi.Domain.GRPC.CopyingDataGRPC";
+option csharp_namespace = "Contracts.KnowledgeBase.GRPC.CopyingData";
 
 package CopyingData;
 

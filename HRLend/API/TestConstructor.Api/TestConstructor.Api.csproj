@@ -18,13 +18,13 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
     <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.5.0" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.5.0" />
-	<Protobuf Include="Protos\Template.proto" GrpcServices="Server" />
-	<Protobuf Include="Protos\TestModule.proto" GrpcServices="Client" />
-	<Protobuf Include="Protos\CopyingData.proto" GrpcServices="Client" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Contracts\Authorization.Contract\Authorization.Contract.csproj" />
+    <ProjectReference Include="..\..\Contracts\KnowledgeBase.Contract\KnowledgeBase.Contract.csproj" />
+    <ProjectReference Include="..\..\Contracts\TestConstructor.Contract\TestConstructor.Contract.csproj" />
+    <ProjectReference Include="..\..\Contracts\TestGenerator.Contract\TestGenerator.Contract.csproj" />
     <ProjectReference Include="..\..\Helpers\Helpers.csproj" />
   </ItemGroup>
 

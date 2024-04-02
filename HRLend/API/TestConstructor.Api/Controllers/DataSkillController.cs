@@ -2,7 +2,7 @@
 using HRApi.Attributes;
 using HRApi.Domain;
 using HRApi.Domain.Auth;
-using CD_GRPC = HRApi.Domain.GRPC.CopyingDataGRPC;
+using CD_GRPC = Contracts.KnowledgeBase.GRPC.CopyingData;
 using HRApi.Domain.DTO;
 using HRApi.Domain.DTO.Request.Skill;
 using HRApi.Domain.DTO.Response.Skill;
@@ -12,8 +12,8 @@ using Swashbuckle.AspNetCore.Annotations;
 using HRApi.Repository.SqlDB;
 using HRApi.Repository.gRPC;
 using HRApi.Domain.DTO.Response.TestModule;
-using HRApi.Domain.GRPC.TestModuleGRPC;
-using static System.Net.Mime.MediaTypeNames;
+using Contracts.TestGenerator.GRPC.TestModule;
+
 
 namespace HRApi.Controllers
 {

@@ -1,5 +1,5 @@
 ﻿using Grpc.Net.Client;
-using HRApi.Domain.GRPC.TestModuleGRPC;
+using Contracts.TestGenerator.GRPC.TestModule;
 
 namespace HRApi.Repository.gRPC
 {

@@ -183,7 +183,7 @@ namespace TestApi.Controllers
                 }
 
                 //создаем тест
-                TestApi.Domain.GRPC.TestGeneratorGRPC.Test test
+                Contracts.TestGenerator.GRPC.TestGenerator.Test test
                     = await _testGeneratorRepository.GetTest(
                         testModuleLinks.ToArray(),
                         template.Settings.MixQuestions,

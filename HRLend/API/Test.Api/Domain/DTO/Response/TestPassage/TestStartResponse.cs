@@ -1,4 +1,4 @@
-﻿using Swashbuckle.AspNetCore.Annotations;
+﻿
 
 namespace TestApi.Domain.DTO.Response.TestPassage
 {
@@ -6,6 +6,6 @@ namespace TestApi.Domain.DTO.Response.TestPassage
     {
         public int ResponseId { get; set; }
         public TestResultSetingsResponse ResultSetings { get; set; }
-        public TestApi.Domain.GRPC.TestGeneratorGRPC.Test Test {  get; set; }
+        public Contracts.TestGenerator.GRPC.TestGenerator.Test Test {  get; set; }
     }
 }

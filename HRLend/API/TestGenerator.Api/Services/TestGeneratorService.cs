@@ -1,6 +1,6 @@
 ﻿using Grpc.Core;
-using TG = TestGeneratorApi.Domain.GRPC.TestGeneratorGRPC;
-using TM = TestGeneratorApi.Domain.GRPC.TestModuleGRPC;
+using TG = Contracts.TestGenerator.GRPC.TestGenerator;
+using TM = Contracts.TestGenerator.GRPC.TestModule;
 using TestGeneratorApi.Repository;
 using Helpers.Collections;
 

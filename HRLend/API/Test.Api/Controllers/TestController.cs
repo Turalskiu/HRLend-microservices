@@ -1,14 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Npgsql;
+﻿using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
-using System.Linq;
 using TestApi.Attributes;
 using TestApi.Domain.Auth;
 using TestApi.Domain.DTO;
 using TestApi.Domain.DTO.Request.Test;
 using TestApi.Domain.DTO.Response.Test;
-using TestApi.Domain.GRPC.TemplateGRPC;
+using Contracts.TestConstructor.GRPC.Template;
 using DocumentDB = TestApi.Repository.DocumentDB;
 using TestApi.Repository.GRPC;
 using TestApi.Repository.SqlDB;
