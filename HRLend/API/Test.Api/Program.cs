@@ -66,12 +66,57 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.Configure<AppSetting>(builder.Configuration.GetSection("AppSettings"));
 builder.Services.Configure<MailSetting>(builder.Configuration.GetSection("MailSettings"));
 
-var connectionString = "Host=localhost;Port=5432;Database=Test;Username=postgres;Password=qweasdzxc123987";
-var connectionStringMongoDB = "mongodb://localhost:27017";
-var templateGrpcUrl = "http://localhost:4999";
-var testGenerateGrpcUrl = "http://localhost:5271";
 
-var queueUrl = "amqp://guest:guest@localhost:5672";
+string connectionString;
+string connectionStringMongoDB;
+string templateGrpcUrl;
+string testGenerateGrpcUrl;
+string queueUrl;
+string mongoDB;
+
+
+if (builder.Environment.IsDevelopment())
+{
+    connectionString = "Host=localhost;Port=5432;Database=Test;Username=postgres;Password=qweasdzxc123987";
+    connectionStringMongoDB = "mongodb://localhost:27017";
+    templateGrpcUrl = "http://localhost:8083";
+    testGenerateGrpcUrl = "http://localhost:5204";
+    queueUrl = "amqp://guest:guest@localhost:5672";
+    mongoDB = "Test";
+}
+else
+{
+    //mongo
+    var mongoDBHost = Environment.GetEnvironmentVariable("MONGO_DB_HOST");
+    var mongoDBPort = Environment.GetEnvironmentVariable("MONGO_DB_PORT");
+    mongoDB = Environment.GetEnvironmentVariable("MONGO_DB");
+    var mongoDBUser = Environment.GetEnvironmentVariable("MONGO_DB_USER");
+    var mongoDBPassword = Environment.GetEnvironmentVariable("MONGO_DB_PASSWORD");
+    //postgre
+    var dbHost = Environment.GetEnvironmentVariable("DB_HOST");
+    var dbPort = Environment.GetEnvironmentVariable("DB_PORT");
+    var db = Environment.GetEnvironmentVariable("DB");
+    var dbUser = Environment.GetEnvironmentVariable("DB_USER");
+    var dbPassword = Environment.GetEnvironmentVariable("DB_PASSWORD");
+    //tg
+    var tgUrl = Environment.GetEnvironmentVariable("TG_URL");
+    var tgPort = Environment.GetEnvironmentVariable("TG_PORT");
+    //tc
+    var testConstructorUrl = Environment.GetEnvironmentVariable("TC_URL");
+    var testConstructorPort = Environment.GetEnvironmentVariable("TC_PORT");
+    //queue
+    var queueHost = Environment.GetEnvironmentVariable("QUEUE_HOST");
+    var queuePort = Environment.GetEnvironmentVariable("QUEUE_PORT");
+    var queueUser = Environment.GetEnvironmentVariable("QUEUE_USER");
+    var queuePassword = Environment.GetEnvironmentVariable("QUEUE_PASSWORD");
+
+    connectionStringMongoDB = $"mongodb://{mongoDBUser}:{mongoDBPassword}@{mongoDBHost}:{mongoDBPort}";
+    connectionString = $"Host={dbHost};Port={dbPort};Database={db};Username={dbUser};Password={dbPassword}";
+    testGenerateGrpcUrl = $"http://{tgUrl}:{tgPort}";
+    templateGrpcUrl = $"http://{testConstructorUrl}:{testConstructorPort}";
+    queueUrl = $"amqp://{queueUser}:{queuePassword}@{queueHost}:{queuePort}";
+}
+
 
 // configure DI for application services
 builder.Services.AddScoped<IMailService, MailService>();
@@ -79,7 +124,7 @@ builder.Services.AddScoped<IJwtUtils, JwtUtils>();
 builder.Services.AddScoped<TestApi.Repository.SqlDB.ITestRepository, TestApi.Repository.SqlDB.TestRepository>(ur => new TestApi.Repository.SqlDB.TestRepository(connectionString));
 builder.Services.AddScoped<ILinkRepository, LinkRepository>(ur => new LinkRepository(connectionString));
 builder.Services.AddScoped<IAuthRepository, AuthRepository>(ur => new AuthRepository(connectionString));
-builder.Services.AddScoped<TestApi.Repository.DocumentDB.ITestRepository, TestApi.Repository.DocumentDB.TestRepository>(ur => new TestApi.Repository.DocumentDB.TestRepository(connectionStringMongoDB, "Test"));
+builder.Services.AddScoped<TestApi.Repository.DocumentDB.ITestRepository, TestApi.Repository.DocumentDB.TestRepository>(ur => new TestApi.Repository.DocumentDB.TestRepository(connectionStringMongoDB, mongoDB));
 builder.Services.AddScoped<ITestTemplateRepository, TestTemplateRepository>(ur => new TestTemplateRepository(templateGrpcUrl));
 builder.Services.AddScoped<ITestGeneratorRepository, TestGeneratorRepository>(ur => new TestGeneratorRepository(testGenerateGrpcUrl));
 builder.Services.AddScoped<ITemplateStatisticsService, TemplateStatisticsService>(ur => new TemplateStatisticsService());
@@ -97,11 +142,9 @@ builder.Services.AddHostedService(provider =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
+
 
 app.UseSession();
 

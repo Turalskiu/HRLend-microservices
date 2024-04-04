@@ -19,7 +19,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "HR API", Version = "v1" });
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Test Constructor API", Version = "v1" });
 
     // Включение поддержки аннотаций из Swashbuckle.AspNetCore.Annotations
     c.EnableAnnotations();
@@ -54,38 +54,66 @@ builder.Services.AddSwaggerGen(c =>
 
 
 builder.Services.Configure<AppSetting>(builder.Configuration.GetSection("AppSettings"));
-var connectionString = "Host=localhost;Port=5432;Database=HR;Username=postgres;Password=qweasdzxc123987";
-var testModuleGrpcUrl = "http://localhost:5271";
-var knowledgeBaseGrpcUrl = "http://localhost:5000";
 
-var queueUrl = "amqp://guest:guest@localhost:5672";
+string connectionStringDB;
+string testModuleGrpcUrl;
+string knowledgeBaseGrpcUrl;
+string queueUrl;
+
+if (builder.Environment.IsDevelopment())
+{
+    connectionStringDB = "Host=localhost;Port=5432;Database=HR;Username=postgres;Password=qweasdzxc123987";
+    testModuleGrpcUrl = "http://localhost:5204";
+    knowledgeBaseGrpcUrl = "http://localhost:8081";
+    queueUrl = "amqp://guest:guest@localhost:5672";
+}
+else
+{
+    var dbHost = Environment.GetEnvironmentVariable("DB_HOST");
+    var dbPort = Environment.GetEnvironmentVariable("DB_PORT");
+    var db = Environment.GetEnvironmentVariable("DB");
+    var dbUser = Environment.GetEnvironmentVariable("DB_USER");
+    var dbPassword = Environment.GetEnvironmentVariable("DB_PASSWORD");
+    var tgUrl = Environment.GetEnvironmentVariable("TG_URL");
+    var tgPort = Environment.GetEnvironmentVariable("TG_PORT");
+    var kbUrl = Environment.GetEnvironmentVariable("KB_URL");
+    var kbPort = Environment.GetEnvironmentVariable("KB_PORT");
+    var queueHost = Environment.GetEnvironmentVariable("QUEUE_HOST");
+    var queuePort = Environment.GetEnvironmentVariable("QUEUE_PORT");
+    var queueUser = Environment.GetEnvironmentVariable("QUEUE_USER");
+    var queuePassword = Environment.GetEnvironmentVariable("QUEUE_PASSWORD");
+
+    testModuleGrpcUrl = $"http://{tgUrl}:{tgPort}";
+    knowledgeBaseGrpcUrl = $"http://{kbUrl}:{kbPort}";
+    connectionStringDB = $"Host={dbHost};Port={dbPort};Database={db};Username={dbUser};Password={dbPassword}";
+    queueUrl = $"amqp://{queueUser}:{queuePassword}@{queueHost}:{queuePort}";
+}
+
 
 // configure DI for application services
 builder.Services.AddScoped<IJwtUtils, JwtUtils>();
-builder.Services.AddScoped<ITestTemplateRepository, TestTemplateRepository>(ur => new TestTemplateRepository(connectionString));
-builder.Services.AddScoped<ICompetenceRepository, CompetenceRepository>(ur => new CompetenceRepository(connectionString));
-builder.Services.AddScoped<ISkillRepository, SkillRepository>(ur => new SkillRepository(connectionString));
-builder.Services.AddScoped<IAuthRepository, AuthRepository>(ur => new AuthRepository(connectionString));
+builder.Services.AddScoped<ITestTemplateRepository, TestTemplateRepository>(ur => new TestTemplateRepository(connectionStringDB));
+builder.Services.AddScoped<ICompetenceRepository, CompetenceRepository>(ur => new CompetenceRepository(connectionStringDB));
+builder.Services.AddScoped<ISkillRepository, SkillRepository>(ur => new SkillRepository(connectionStringDB));
+builder.Services.AddScoped<IAuthRepository, AuthRepository>(ur => new AuthRepository(connectionStringDB));
 builder.Services.AddScoped<ITestModuleRepository, TestModuleRepository>(ur => new TestModuleRepository(testModuleGrpcUrl));
 builder.Services.AddScoped<IKnowledgeBaseRepository, KnowledgeBaseRepository>(ur => new KnowledgeBaseRepository(knowledgeBaseGrpcUrl));
-
 
 builder.Services.AddHostedService(provider =>
     new CabinetConsumerService(
         queueUrl,
-        new AuthRepository(connectionString),
+        new AuthRepository(connectionStringDB),
         provider.GetRequiredService<ILogger<CabinetConsumerService>>()
     )
 );
 
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
+
 
 app.UseCors(x => x
     .SetIsOriginAllowed(origin => true)

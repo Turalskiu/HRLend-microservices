@@ -57,20 +57,40 @@ builder.Services.AddSwaggerGen(c =>
 // configure strongly typed settings object
 builder.Services.Configure<AppSetting>(builder.Configuration.GetSection("AppSettings"));
 
-var connectionStringMongoDB = "mongodb://localhost:27017";
+string connectionStringMongoDB;
+string tgUrl;
+string mongodb;
+
+if (builder.Environment.IsDevelopment())
+{
+    connectionStringMongoDB = "mongodb://localhost:27017";
+    mongodb = "KB";
+}
+else
+{
+    var dbHost = Environment.GetEnvironmentVariable("MONGO_DB_HOST");
+    var dbPort = Environment.GetEnvironmentVariable("MONGO_DB_PORT");
+    mongodb = Environment.GetEnvironmentVariable("MONGO_DB");
+    var dbUser = Environment.GetEnvironmentVariable("MONGO_DB_USER");
+    var dbPassword = Environment.GetEnvironmentVariable("MONGO_DB_PASSWORD");
+    var tgHost = Environment.GetEnvironmentVariable("TG_URL");
+    var tgPort = Environment.GetEnvironmentVariable("TG_PORT");
+
+    tgUrl = $"http://{tgHost}:{tgPort}";
+    connectionStringMongoDB = $"mongodb://{dbUser}:{dbPassword}@{dbHost}:{dbPort}";
+}
+
 
 // configure DI for application services
 builder.Services.AddScoped<IJwtUtils, JwtUtils>();
-builder.Services.AddScoped<IProfessionRepository, ProfessionRepository>(ur => new ProfessionRepository(connectionStringMongoDB, "KB"));
+builder.Services.AddScoped<IProfessionRepository, ProfessionRepository>(ur => new ProfessionRepository(connectionStringMongoDB, mongodb));
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
+
 
 
 app.UseCors(x => x

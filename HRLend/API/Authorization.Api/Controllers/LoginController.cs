@@ -49,7 +49,7 @@ namespace AuthorizationApi.Controllers
             {
                 response = _userService.Authenticate(model, ipAddress());
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return BadRequest("Не верный пароль или логин");
             }

@@ -63,11 +63,32 @@ builder.Services.AddSwaggerGen(c =>
 // configure strongly typed settings object
 builder.Services.Configure<AppSetting>(builder.Configuration.GetSection("AppSettings"));
 builder.Services.Configure<MailSetting>(builder.Configuration.GetSection("MailSettings"));
-var connectionString = "Host=localhost;Port=5432;Database=Auth;Username=postgres;Password=qweasdzxc123987";
+
 var url = "Resources";
+string connectionString;
+string queueUrl;
 
-var queueUrl = "amqp://guest:guest@localhost:5672";
+if (builder.Environment.IsDevelopment())
+{
+    connectionString = "Host=localhost;Port=5432;Database=Auth;Username=postgres;Password=qweasdzxc123987";
+    queueUrl = "amqp://guest:guest@localhost:5672";
+}
+else
+{
+    var dbHost = Environment.GetEnvironmentVariable("DB_HOST");
+    var dbPort = Environment.GetEnvironmentVariable("DB_PORT");
+    var db = Environment.GetEnvironmentVariable("DB");
+    var dbUser = Environment.GetEnvironmentVariable("DB_USER");
+    var dbPassword = Environment.GetEnvironmentVariable("DB_PASSWORD");
 
+    var queueHost = Environment.GetEnvironmentVariable("QUEUE_HOST");
+    var queuePort = Environment.GetEnvironmentVariable("QUEUE_PORT");
+    var queueUser = Environment.GetEnvironmentVariable("QUEUE_USER");
+    var queuePassword = Environment.GetEnvironmentVariable("QUEUE_PASSWORD");
+
+    connectionString = $"Host={dbHost};Port={dbPort};Database={db};Username={dbUser};Password={dbPassword}";
+    queueUrl = $"amqp://{queueUser}:{queuePassword}@{queueHost}:{queuePort}";
+}
 
 // configure DI for application services
 builder.Services.AddScoped<IUserRepository, UserRepository>(ur => new UserRepository(connectionString));
@@ -85,11 +106,8 @@ var app = builder.Build();
 
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
 
 
 app.UseSession();
