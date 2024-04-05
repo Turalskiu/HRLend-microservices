@@ -84,7 +84,7 @@ services:
       - QUEUE_USER=user
       - QUEUE_PASSWORD=qweasdzxc123987
     volumes: 
-      - ./AuthorizationApi/AuthorizationApi/Resources:/app/Resources
+      - ./API/Authorization.Api/Resources:/app/Resources
     healthcheck:
       test: ["CMD-SHELL", "exit 0"]
     networks:
@@ -220,7 +220,7 @@ services:
     healthcheck:
       test: ["CMD-SHELL", "exit 0"]
     volumes: 
-      - ./TestApi/TestApi/Resources:/app/Resources
+      - ./API/Test.Api/Resources:/app/Resources
     networks:
       - demonetwork
 
