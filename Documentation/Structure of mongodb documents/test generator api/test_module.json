@@ -1,0 +1,75 @@
+{
+    "_id": "659152b679510b0a8fd27f13",
+
+    "title": "тест модуль для навыка стессоустойчивость",
+
+    "options":{
+        "is_default": true,
+        "count_questions": 2,
+        "take_questions": 2,
+        "limit_duration_in_seconds": 120
+    },
+
+    "rule":{
+        "min_value_for_passed": 1     
+    },
+
+    "recommendations":[
+        {
+            "title" : "metanit.com",
+            "description": "Изучение python",
+            "link": "https://metanit.com/python/fastapi/1.8.php"
+        }
+    ],
+
+    "questions":[
+        {
+            "id": "ea03ec8d-4c94-43b3-1943-41d6b041d758",
+
+            "text": "Как дела?",
+            "description": "",
+
+            "type": "radiobutton",
+            "max_value": 1,  
+
+            "options":[
+                {
+                    "id": "7a03ec8d-4c94-43b3-1943-41d6b041d758",
+                    "is_true": true,
+                    "text": "Отлично!"
+                },
+                {
+                    "id": "ea73ec8d-4c94-43b3-1943-41d6b041d758",
+                    "is_true": false,
+                    "text": "Плохо!"
+                }
+            ]
+        },
+
+        {
+            "id": "ea03ec8d-4c94-43b3-1943-41d6b041d756",
+            "text": "Какие типы данных имеются в языке программирования c#?",
+            "description": "",
+            "type": "checkbox",
+            "max_value": 1, 
+
+            "options":[
+                {
+                    "id": "ea03ec8d-4c04-43b3-1943-41d6b041d758",
+                    "is_true": false,
+                    "text": "Хорошие"
+                },
+                {
+                    "id": "ea03ec8d-4c94-43b3-1943-51d6b041d758",
+                    "is_true": true,
+                    "text": "int"
+                },
+                {
+                    "id": "ea03ec8d-4994-43b3-1943-41d6b041d758",
+                    "is_true": true,
+                    "text": "string"
+                }
+            ]
+        }
+    ]
+}

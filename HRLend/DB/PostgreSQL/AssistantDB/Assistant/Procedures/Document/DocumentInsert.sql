@@ -1,5 +1,4 @@
 CREATE OR REPLACE PROCEDURE assistant.document__insert(
-        _id integer,
 		_cabinet_id integer,
 		_title text,
 		_elasticsearch_index text,
@@ -8,13 +7,11 @@ CREATE OR REPLACE PROCEDURE assistant.document__insert(
 	$$		
 		BEGIN
 			INSERT INTO assistant.document (
-					id,
 					cabinet_id,
 					title,
 					elasticsearch_index
 				) 
 				VALUES (
-					_id,
 					_cabinet_id,
 					_title,
 					_elasticsearch_index

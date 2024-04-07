@@ -1,0 +1,31 @@
+{
+    "_id": "659152b679510b0a8fd27f13",
+
+    "title": "тест модуль для навыка стессоустойчивость",
+
+    "competencies":[
+        {
+            "title" : "Стрессоустойчивость",
+
+            "competence_need":{
+                "required_code": 1,
+                "title": "hard"
+            },
+            
+
+            "skills":[            
+                {
+                    "skill_need":{
+                        "required_code": 1,
+                        "title": "hard"
+                    },
+
+                    "title" : "Умение не конфликтовать",
+                    "required_code": 1,
+                    "id_test_module": "659152b679510b0a8fd27f13"
+                }
+            ]
+
+        }
+    ]
+}

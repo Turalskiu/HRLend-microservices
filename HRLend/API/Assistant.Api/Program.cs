@@ -46,22 +46,40 @@ builder.Services.AddSwaggerGen(c =>
     c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
 });
 
+builder.Services.AddCors();
+builder.Services.AddControllers();
+
 // configure strongly typed settings object
 builder.Services.Configure<AppSetting>(builder.Configuration.GetSection("AppSettings"));
 
 string connectionStringSqlDB;
 string chadGptUrl;
 string chadGptApiKey;
+string elasticsearchUrl;
+string elasticsearchUsername;
+string elasticsearchPassword;
+string elasticsearchApiKeyId;
+string elasticsearchApiKey;
+string elasticsearchIndex;
 
 
 connectionStringSqlDB = "Host=localhost;Port=5432;Database=Assistant;Username=postgres;Password=qweasdzxc123987";
 chadGptUrl = "https://ask.chadgpt.ru/api/public/gpt-3.5";
 chadGptApiKey = "chad-c647e5d4d8fa4f0ca5457d4e62f965812ra1iudl";
+elasticsearchUrl = "https://localhost:9200";
+elasticsearchUsername = "elastic";
+elasticsearchPassword ="qweasdzxc123987";
+elasticsearchIndex = "document_index";
+
+//await ElasticsearchRepository.DeleteIndex(elasticsearchUrl, elasticsearchUsername, elasticsearchPassword, elasticsearchIndex);
+await ElasticsearchRepository.CreateIndex(elasticsearchUrl, elasticsearchUsername, elasticsearchPassword, elasticsearchIndex);
 
 
 builder.Services.AddScoped<IJwtUtils, JwtUtils>();
 builder.Services.AddScoped<IDocumentRepository, DocumentRepository>(ur => new DocumentRepository(connectionStringSqlDB));
+builder.Services.AddScoped<IElasticsearchRepository, ElasticsearchRepository>(ur => new ElasticsearchRepository(elasticsearchUrl, elasticsearchUsername, elasticsearchPassword, elasticsearchIndex));
 builder.Services.AddScoped<IGptService, ChadGptService>(ur => new ChadGptService(chadGptUrl, chadGptApiKey));
+builder.Services.AddScoped<ISplitDocumentService, SimpleSplitDocumentService>();
 
 
 var app = builder.Build();
@@ -81,8 +99,8 @@ app.UseCors(x => x
 
 // custom jwt auth middleware
 app.UseMiddleware<JwtMiddleware>();
-
 app.MapControllers();
+
 
 app.Run();
 

@@ -8,6 +8,7 @@ namespace Assistant.Api.Repository
     {
         int InsertDocument(Document doc);
         void DeleteDocument(int id);
+        Document? GetDocument(int id);
         IEnumerable<Document> SelectDocument(int cabinetId);
     }
 
@@ -25,7 +26,6 @@ namespace Assistant.Api.Repository
         {
             var parames = new List<KeyValuePair<string, object>>()
             {
-                new KeyValuePair<string, object>("@Id", doc.Id),
                 new KeyValuePair<string, object>("@CabinetId", doc.CabinetId),
                 new KeyValuePair<string, object>("@Title", doc.Title??string.Empty),
                 new KeyValuePair<string, object>("@ElasticsearchIndex", doc.ElasticsearchIndex??string.Empty),
@@ -54,7 +54,36 @@ namespace Assistant.Api.Repository
                 false,
                 parames
             );
-        } 
+        }
+        public Document? GetDocument(int id)
+        {
+
+            Func<IDataRecord, Document> convertDocument = (record) =>
+            {
+                var entity = new Document
+                {
+                    Id = id,
+                    CabinetId = record.Get<int>("cabinet_id"),
+                    Title = record.Get<string>("title"),
+                    ElasticsearchIndex = record.Get<string>("elasticsearch_index")
+
+                };
+                return entity;
+            };
+
+            var parames = new List<KeyValuePair<string, object>>()
+            {
+                new KeyValuePair<string, object>("@Id", id)
+            };
+
+            string queryParam = parames.CreateParameterListString();
+
+            return _connectionString.ExecuteSelect(
+                "select * from assistant.document__get(" + queryParam + ");",
+                convertDocument,
+                parames
+            ).FirstOrDefault();
+        }
         public IEnumerable<Document> SelectDocument(int cabinetId)
         {
 

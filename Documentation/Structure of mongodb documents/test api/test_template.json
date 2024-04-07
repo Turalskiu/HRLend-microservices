@@ -1,0 +1,34 @@
+{
+    "_id": "659152b679510b0a8fd27f13",
+
+    "title": "тест модуль для навыка стессоустойчивость",
+
+    "settings":{
+        "mix_questions": true,
+        "mix_answers": false,
+        "is_correct": false,
+        "is_timer": true
+    },
+
+    "result_setings":{
+        "is_show_recommend_materials": true,
+        "is_show_result_and_true_questions": false,
+        "is_show_result": true
+    },
+
+    "competencies":[
+        {
+            "title" : "Стрессоустойчивость",
+            "required_code": 1,
+
+            "skills":[            
+                {
+                    "title" : "Умение не конфликтовать",
+                    "required_code": 1,
+                    "id_test_module": "659152b679510b0a8fd27f13"
+                }
+            ]
+
+        }
+    ]
+}

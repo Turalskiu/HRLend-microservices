@@ -1,0 +1,101 @@
+{
+    "_id": "659152b679510b0a8fd27f13",
+
+    "test_info":{
+        "count_questions": 2,
+        "max_value": 2
+    },
+    
+    "settings":{
+        "limit_duration_in_seconds": 120,
+        "is_timer": true,
+        "is_corrected": false
+    },
+
+
+    "user_result":{
+        "duration_in_seconds": 117,
+        "values": 2,
+        "is_completed": true,
+        "is_passed": true,
+        "date_start": null,
+        "date_end": null
+    },
+
+    "test_module_result":
+    [
+        {
+            "test_module_id": "659152b679510b0a8fd27f13",
+            "min_value_for_passed": 1,
+            "max_value": 2,
+                  
+            "user_result":{
+                "values": 2,
+                "is_passed": true
+            }
+        }
+    ],
+
+    "questions":[
+        {
+            "test_module_id": "ea03ec8d-4c94-43b3-1943-41d6b041d758",
+
+            "text": "Как дела?",
+            "description": "",
+
+            "type": "radiobutton",
+            "max_value": 1,  
+
+            "options":[
+                {
+                    "is_true": true,
+                    "text": "Отлично!",
+                    "is_user_answer": true
+                },
+                {
+                    "is_true": false,
+                    "text": "Плохо!",
+                    "is_user_answer": false
+                }
+            ],
+
+            "user_result":{
+                "values": 1,
+                "is_skip": false,
+                "is_passed": true
+            }
+        },
+
+        {
+            "test_module_id": "ea03ec8d-4c94-43b3-1943-41d6b041d756",
+            "text": "Какие типы данных имеются в языке программирования c#?",
+            "description": "",
+            "type": "checkbox",
+            "max_value": 1, 
+
+            "options":[
+                {
+                    "is_true": false,
+                    "text": "Хорошие",
+                    "is_user_answer": false
+                },
+                {
+                    "is_true": true,
+                    "text": "int",
+                    "is_user_answer": true
+                },
+                {
+                    "is_true": true,
+                    "text": "string",
+                    "is_user_answer": true
+                }
+            ],
+
+            "user_result":{
+                "values": 1,
+                "is_skip": false,
+                "is_passed": true
+            }
+        }
+    ]
+}

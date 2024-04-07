@@ -1,0 +1,78 @@
+{
+    "_id": "659152b679510b0a8fd27f13",
+
+    "test_info":{
+        "count_questions": 2,
+        "max_value": 2
+    },
+    
+    "settings":{
+        "limit_duration_in_seconds": 120,
+        "is_timer": true,
+        "is_corrected": false
+    },
+
+
+    "rule":{
+        "test_modules":[
+            {
+                "id": "659152b679510b0a8fd27f13",
+                "min_value_for_passed": 1,
+                
+                "recommendations":[
+                    {
+                        "title" : "metanit.com",
+                        "description": "Изучение python",
+                        "link": "https://metanit.com/python/fastapi/1.8.php"
+                    }
+                ]
+            }
+        ]
+    },
+
+    "questions":[
+        {
+            "test_module_id": "ea03ec8d-4c94-43b3-1943-41d6b041d758",
+
+            "text": "Как дела?",
+            "description": "",
+
+            "type": "radiobutton",
+            "max_value": 1,  
+
+            "options":[
+                {
+                    "is_true": true,
+                    "text": "Отлично!"
+                },
+                {
+                    "is_true": false,
+                    "text": "Плохо!"
+                }
+            ]
+        },
+
+        {
+            "id": "ea03ec8d-4c94-43b3-1943-41d6b041d756",
+            "text": "Какие типы данных имеются в языке программирования c#?",
+            "description": "",
+            "type": "checkbox",
+            "max_value": 1, 
+
+            "options":[
+                {
+                    "is_true": false,
+                    "text": "Хорошие"
+                },
+                {
+                    "is_true": true,
+                    "text": "int"
+                },
+                {
+                    "is_true": true,
+                    "text": "string"
+                }
+            ]
+        }
+    ]
+}

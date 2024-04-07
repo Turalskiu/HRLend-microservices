@@ -1,0 +1,25 @@
+<mxfile host="Electron" modified="2024-04-06T19:24:12.574Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.1.11 Chrome/114.0.5735.289 Electron/25.9.8 Safari/537.36" etag="4R2WUoKIOWaU1ixa0X30" version="22.1.11" type="device">
+  <diagram name="Страница — 1" id="1TYfu1R_IDw34KdIdkEx">
+    <mxGraphModel dx="1036" dy="614" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="P66Dupzval010tieeRXh-1" value="document" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="300" y="170" width="191" height="146" as="geometry" />
+        </mxCell>
+        <mxCell id="P66Dupzval010tieeRXh-2" value="id" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" vertex="1" parent="P66Dupzval010tieeRXh-1">
+          <mxGeometry y="26" width="191" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="P66Dupzval010tieeRXh-3" value="cabinet_id" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" vertex="1" parent="P66Dupzval010tieeRXh-1">
+          <mxGeometry y="56" width="191" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="P66Dupzval010tieeRXh-4" value="title" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" vertex="1" parent="P66Dupzval010tieeRXh-1">
+          <mxGeometry y="86" width="191" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="P66Dupzval010tieeRXh-5" value="elasticsearch_index" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" vertex="1" parent="P66Dupzval010tieeRXh-1">
+          <mxGeometry y="116" width="191" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

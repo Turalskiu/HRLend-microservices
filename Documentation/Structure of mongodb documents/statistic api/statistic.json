@@ -1,0 +1,26 @@
+{
+    "_id": "659152b679510b0a8fd27f13",
+
+    "user":{
+        "user_id": 3,
+        "username": "oleg",
+        "email": "dfs"
+    },
+
+
+    "competencies":[
+        {
+            "title" : "Стрессоустойчивость",
+            "date_create": "2022-07-26T15:00:00.000Z",
+            "percent": 45
+        }
+    ],
+
+    "skills":[
+        {
+            "title" : "Стрессоустойчивость",
+            "date_create": "2022-07-26T15:00:00.000Z",
+            "percent": 45
+        }
+    ]
+}

@@ -1,0 +1,30 @@
+{
+    "_id": "659152b679510b0a8fd27f13",
+
+    "title": "test 1",
+
+    "is_passed": false,
+    "percent": 34,
+
+    "competencies":[
+        {
+            "title" : "Стрессоустойчивость",
+            "required_code": 1,
+
+            "is_passed": true,
+            "percent": 57,
+
+            "skills":[            
+                {
+                    "title" : "Умение не конфликтовать",
+                    "required_code": 1,
+                    "id_test_module": "659152b679510b0a8fd27f13",
+
+                    "is_passed": true,
+                    "percent": 89
+                }
+            ]
+
+        }
+    ]
+}
