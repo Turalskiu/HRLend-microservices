@@ -138,9 +138,41 @@ namespace Assistant.Api.Repository
 
             if (!indexExistsResponse.Exists)
             {
-                var createIndexResponse = await client.Indices.CreateAsync(index, c => c
+                // Настройки анализа
+                var analysisSettings = new AnalysisDescriptor()
+                    .CharFilters(cf => cf
+                        .Mapping("rus_to_eng", m => m
+                            .Mappings("ё => е", "Ё => Е")
+                        )
+                    )
+                    .TokenFilters(tf => tf
+                        .Stop("russian_stop", s => s
+                            .StopWords("_russian_")
+                        )
+                        .Stemmer("russian_stemmer", st => st
+                            .Language("russian")
+                        )
+                    )
+                    .Analyzers(a => a
+                        .Custom("russian_analyzer", ca => ca
+                            .Tokenizer("standard")
+                            .CharFilters("rus_to_eng")
+                            .Filters("lowercase", "russian_stop", "russian_stemmer")
+                        )
+                    );
+
+                // Создание индекса с настройками анализа и маппингами
+                var createIndexResponse = await client.Indices.CreateAsync("your_index_name", c => c
+                    .Settings(s => s
+                        .Analysis(a => analysisSettings)
+                    )
                     .Map<Block>(m => m
-                        .AutoMap()
+                        .Properties(p => p
+                            .Text(t => t
+                                .Name(n => n.Content)
+                                .Analyzer("russian_analyzer")
+                            )
+                        )
                     )
                 );
 

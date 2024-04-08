@@ -20,7 +20,7 @@ namespace Assistant.Api.Controllers
         private readonly IElasticsearchRepository _elasticsearchRepository;
         private readonly ISplitDocumentService _splitDocumentService;
 
-        private int _splitSize = 10;
+        private int _splitSize = 1024;
 
         public DocumentController(
             IDocumentRepository documentRepository,
