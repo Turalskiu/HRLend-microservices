@@ -63,6 +63,7 @@ string elasticsearchApiKey;
 string elasticsearchIndex;
 
 
+string path = "Resources";
 connectionStringSqlDB = "Host=localhost;Port=5432;Database=Assistant;Username=postgres;Password=qweasdzxc123987";
 chadGptUrl = "https://ask.chadgpt.ru/api/public/gpt-3.5";
 chadGptApiKey = "chad-c647e5d4d8fa4f0ca5457d4e62f965812ra1iudl";
@@ -78,6 +79,7 @@ await ElasticsearchRepository.CreateIndex(elasticsearchUrl, elasticsearchUsernam
 builder.Services.AddScoped<IJwtUtils, JwtUtils>();
 builder.Services.AddScoped<IDocumentRepository, DocumentRepository>(ur => new DocumentRepository(connectionStringSqlDB));
 builder.Services.AddScoped<IElasticsearchRepository, ElasticsearchRepository>(ur => new ElasticsearchRepository(elasticsearchUrl, elasticsearchUsername, elasticsearchPassword, elasticsearchIndex));
+builder.Services.AddScoped<IPromtRepository, PromtRepository>(ur => new PromtRepository(path));
 builder.Services.AddScoped<IGptService, ChadGptService>(ur => new ChadGptService(chadGptUrl, chadGptApiKey));
 builder.Services.AddScoped<ISplitDocumentService, SimpleSplitDocumentService>();
 

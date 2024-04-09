@@ -64,7 +64,7 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.Configure<AppSetting>(builder.Configuration.GetSection("AppSettings"));
 builder.Services.Configure<MailSetting>(builder.Configuration.GetSection("MailSettings"));
 
-var url = "Resources";
+string path = "Resources";
 string connectionString;
 string queueUrl;
 
@@ -94,7 +94,7 @@ else
 builder.Services.AddScoped<IUserRepository, UserRepository>(ur => new UserRepository(connectionString));
 builder.Services.AddScoped<IAdminRepository, AdminRepository>(ur => new AdminRepository(connectionString));
 builder.Services.AddScoped<ICabinetRepository, CabinetRepository>(ur => new CabinetRepository(connectionString));
-builder.Services.AddScoped<IObjectStoreRepository, FolderRepository>(ur => new FolderRepository(url));
+builder.Services.AddScoped<IObjectStoreRepository, FolderRepository>(ur => new FolderRepository(path));
 builder.Services.AddScoped<IJwtUtils, JwtUtils>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IAdminService, AdminService>();

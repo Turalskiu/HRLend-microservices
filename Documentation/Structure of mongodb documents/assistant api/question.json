@@ -1,0 +1,23 @@
+{
+   "questions":[
+        {
+            "text": "Как дела?",
+
+            "type": "radiobutton", 
+
+            "options":[
+                {
+                    "is_true": true,
+                    "text": "Отлично!"
+                },
+                {
+                    "is_true": false,
+                    "text": "Плохо!"
+                }
+            ]
+        }
+    ] 
+}
+
+
+
