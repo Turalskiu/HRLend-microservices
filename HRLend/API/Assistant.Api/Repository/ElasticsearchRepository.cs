@@ -162,9 +162,9 @@ namespace Assistant.Api.Repository
                     );
 
                 // Создание индекса с настройками анализа и маппингами
-                var createIndexResponse = await client.Indices.CreateAsync("your_index_name", c => c
+                var createIndexResponse = await client.Indices.CreateAsync(index, c => c
                     .Settings(s => s
-                        .Analysis(a => analysisSettings)
+                        .Analysis(a=>analysisSettings)
                     )
                     .Map<Block>(m => m
                         .Properties(p => p
@@ -172,6 +172,8 @@ namespace Assistant.Api.Repository
                                 .Name(n => n.Content)
                                 .Analyzer("russian_analyzer")
                             )
+                            .Text(t => t
+                                .Name(n => n.DocumentId))
                         )
                     )
                 );

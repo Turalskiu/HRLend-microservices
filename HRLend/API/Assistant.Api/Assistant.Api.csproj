@@ -27,6 +27,7 @@
 
   <ItemGroup>
     <Folder Include="Domain\DTO\Response\" />
+    <Folder Include="Resources\Promts\" />
   </ItemGroup>
 
 </Project>
