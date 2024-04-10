@@ -75,7 +75,7 @@ if (builder.Environment.IsDevelopment())
 }
 else
 {
-    //postgre
+    //postgres
     var dbHost = Environment.GetEnvironmentVariable("DB_HOST");
     var dbPort = Environment.GetEnvironmentVariable("DB_PORT");
     var db = Environment.GetEnvironmentVariable("DB");

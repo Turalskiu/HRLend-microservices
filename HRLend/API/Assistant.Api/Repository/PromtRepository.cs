@@ -17,7 +17,7 @@
 
         public string GetQuestionGeneratorPromt(string title)
         {
-            string path = _path + "\\Promts\\QuestionGenerator\\" + title + ".txt";
+            string path = _path + "/Promts/QuestionGenerator/" + title + ".txt";
             string promt = File.ReadAllText(path);
             return promt;
         }
