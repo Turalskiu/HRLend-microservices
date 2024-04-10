@@ -7,12 +7,15 @@
     <InvariantGlobalization>true</InvariantGlobalization>
 	<GenerateDocumentationFile>true</GenerateDocumentationFile>
 	<NoWarn>$(NoWarn);1591</NoWarn>
+	<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+	<DockerfileContext>..\..</DockerfileContext>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Elastic.Clients.Elasticsearch" Version="8.13.3" />
     <PackageReference Include="Elasticsearch.Net" Version="7.17.5" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" />
     <PackageReference Include="NEST" Version="7.17.5" />
     <PackageReference Include="Npgsql" Version="8.0.2" />
     <PackageReference Include="OpenAI" Version="1.11.0" />

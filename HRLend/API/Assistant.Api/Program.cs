@@ -61,16 +61,39 @@ string elasticsearchPassword;
 string elasticsearchApiKeyId;
 string elasticsearchApiKey;
 string elasticsearchIndex;
-
-
 string path = "Resources";
-connectionStringSqlDB = "Host=localhost;Port=5432;Database=Assistant;Username=postgres;Password=qweasdzxc123987";
-chadGptUrl = "https://ask.chadgpt.ru/api/public/gpt-3.5";
-chadGptApiKey = "chad-c647e5d4d8fa4f0ca5457d4e62f965812ra1iudl";
-elasticsearchUrl = "https://localhost:9200";
-elasticsearchUsername = "elastic";
-elasticsearchPassword ="qweasdzxc123987";
-elasticsearchIndex = "document_index";
+
+if (builder.Environment.IsDevelopment())
+{
+    connectionStringSqlDB = "Host=localhost;Port=5432;Database=Assistant;Username=postgres;Password=qweasdzxc123987";
+    chadGptUrl = "https://ask.chadgpt.ru/api/public/gpt-3.5";
+    chadGptApiKey = "chad-c647e5d4d8fa4f0ca5457d4e62f965812ra1iudl";
+    elasticsearchUrl = "https://localhost:9200";
+    elasticsearchUsername = "elastic";
+    elasticsearchPassword = "qweasdzxc123987";
+    elasticsearchIndex = "document_index";
+}
+else
+{
+    //postgre
+    var dbHost = Environment.GetEnvironmentVariable("DB_HOST");
+    var dbPort = Environment.GetEnvironmentVariable("DB_PORT");
+    var db = Environment.GetEnvironmentVariable("DB");
+    var dbUser = Environment.GetEnvironmentVariable("DB_USER");
+    var dbPassword = Environment.GetEnvironmentVariable("DB_PASSWORD");
+    connectionStringSqlDB = $"Host={dbHost};Port={dbPort};Database={db};Username={dbUser};Password={dbPassword}";
+
+    //elasticsearch
+    elasticsearchUrl = Environment.GetEnvironmentVariable("ELASTICSEARCH_DB_HOST");
+    elasticsearchUsername = Environment.GetEnvironmentVariable("ELASTICSEARCH_DB_USER");
+    elasticsearchPassword = Environment.GetEnvironmentVariable("ELASTICSEARCH_DB_PASSWORD");
+    elasticsearchIndex = Environment.GetEnvironmentVariable("ELASTICSEARCH_DB_INDEX");
+
+    //gpt
+    chadGptUrl = Environment.GetEnvironmentVariable("GPT_URL");
+    chadGptApiKey = Environment.GetEnvironmentVariable("GPT_KEY");
+}
+
 
 //await ElasticsearchRepository.DeleteIndex(elasticsearchUrl, elasticsearchUsername, elasticsearchPassword, elasticsearchIndex);
 await ElasticsearchRepository.CreateIndex(elasticsearchUrl, elasticsearchUsername, elasticsearchPassword, elasticsearchIndex);

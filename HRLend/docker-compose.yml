@@ -253,6 +253,36 @@ services:
     networks:
       - demonetwork
 
+  asistant:
+    container_name: assistant-api
+    image: ${DOCKER_REGISTRY-}assistantapi
+    build:
+      context: /API/Assistant.Api
+      dockerfile: Dockerfile
+    depends_on:
+      postgres-db:
+        condition: service_healthy
+    ports:
+      - "8089:8080"
+    environment:
+      - DB_HOST=postgres-db
+      - DB_PORT=5432
+      - DB=HRLend
+      - DB_USER=postgres
+      - DB_PASSWORD=qweasdzxc123987
+      - ELASTICSEARCH_DB_HOST=https://localhost:9200
+      - ELASTICSEARCH_DB_INDEX=document_index
+      - ELASTICSEARCH_DB_USER=elastic
+      - ELASTICSEARCH_DB_PASSWORD=qweasdzxc123987
+      - GPT_URL=https://ask.chadgpt.ru/api/public/gpt-3.5
+      - GPT_KEY=chad-c647e5d4d8fa4f0ca5457d4e62f965812ra1iudl
+    volumes: 
+      - ./API/Assistant.Api/Resources:/app/Resources
+    healthcheck:
+      test: ["CMD-SHELL", "exit 0"]
+    networks:
+      - demonetwork
+
 volumes:
   rabbitmq_data:
     driver: local
