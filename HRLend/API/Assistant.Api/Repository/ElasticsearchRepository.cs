@@ -79,6 +79,7 @@ namespace Assistant.Api.Repository
         public async Task<List<Block>> FindBlocks(string documentId, string text, int count)
         {
             var searchResponse = await _client.SearchAsync<Block>(s => s
+                .Index(_index)
                 .Size(count)
                 .Query(q => q
                     .Bool(b => b

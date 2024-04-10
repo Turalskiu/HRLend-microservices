@@ -36,7 +36,7 @@ namespace Assistant.Api.Controllers
         /// <summary>
         /// Получить список документов
         /// </summary>
-        [HttpGet()]
+        [HttpGet]
         [SwaggerResponse(200, "Успешный запрос", typeof(List<Document>))]
         [SwaggerResponse(401, "Не авторизован")]
         [SwaggerResponse(403, "Нет прав")]
