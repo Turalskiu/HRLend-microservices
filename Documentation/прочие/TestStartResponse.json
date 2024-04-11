@@ -1,0 +1,61 @@
+{
+    "responseId": 1,
+    "resultSetings": {
+      "isShowRecommendMaterials": true,
+      "isShowResult": true,
+      "isShowResultAndTrueQuestions": true
+    },
+    "test": {
+
+        "id": 0,
+        "testInfo": {
+            "countQuestions": 29,
+            "maxValue": 29
+        },
+        "settings": {
+            "limitDurationInSeconds": 1920,
+            "isTimer": true,
+            "isCorrected": true
+        },
+        "rule": {
+            "testModules": [
+              {
+                  "id": "659d2b771585c698877dafdd",
+                  "minValueForPassed": 1,
+                  "recommendations": [
+                  {
+                      "title": "metanit.com",
+                      "description": "Изучение python",
+                      "link": "https://metanit.com/python/fastapi/1.8.php"
+                  }
+                  ]
+              }
+            ]
+        },
+
+      "questions": [
+        {
+          "testModuleId": "659d33721585c698877daff9",
+          "id": "",
+          "text": "Какое событие в истории США произошло 4 июля 1776 года?",
+          "description": "",
+          "type": "radiobutton",
+          "maxValue": 1,
+          "options": [
+            {
+              "isTrue": false,
+              "text": "Открытие первого парка развлечений"
+            },
+            {
+              "isTrue": true,
+              "text": "Декларация независимости"
+            },
+            {
+              "isTrue": false,
+              "text": "Война за независимость"
+            }
+          ]
+        }
+      ]
+    }
+  }
