@@ -7,8 +7,8 @@ namespace HRApi.Repository.gRPC
     {
         Task<Module?> GetTestModule(string id);
         Task<string> InsertTestModule(Module module);
-        Task<bool> UpdateTestModule(Module module);
-        Task<bool> DeleteTestModule(string id);
+        Task<ResultModification> UpdateTestModule(Module module);
+        Task<ResultDelete> DeleteTestModule(string id);
     }
 
     public class TestModuleRepository : ITestModuleRepository
@@ -39,22 +39,22 @@ namespace HRApi.Repository.gRPC
             return result.Link_;
         }
 
-        public async Task<bool> UpdateTestModule(Module module)
+        public async Task<ResultModification> UpdateTestModule(Module module)
         {
             using var channel = GrpcChannel.ForAddress(_connectionString);
             var client = new TestModule.TestModuleClient(channel);
 
             ResultModification result = await client.UpdateTestModuleAsync(module);
-            return result.Result;
+            return result;
         }
 
-        public async Task<bool> DeleteTestModule(string id)
+        public async Task<ResultDelete> DeleteTestModule(string id)
         {
             using var channel = GrpcChannel.ForAddress(_connectionString);
             var client = new TestModule.TestModuleClient(channel);
 
-            ResultModification result = await client.DeleteTestModuleAsync(new Link { Link_ = id });
-            return result.Result;
+            ResultDelete result = await client.DeleteTestModuleAsync(new Link { Link_ = id });
+            return result;
         }
     }
 }

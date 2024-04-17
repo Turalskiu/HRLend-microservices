@@ -10,11 +10,16 @@ service TestModule {
   rpc GetTestModule (Link) returns (Module);
   rpc InsertTestModule (Module) returns (Link);
   rpc UpdateTestModule (Module) returns (ResultModification);
-  rpc DeleteTestModule (Link) returns (ResultModification);
+  rpc DeleteTestModule (Link) returns (ResultDelete);
 }
 
 
 message ResultModification {
+  bool is_create = 1;
+  string new_test_module_link = 2;
+}
+
+message ResultDelete {
   bool result = 1;
 }
 

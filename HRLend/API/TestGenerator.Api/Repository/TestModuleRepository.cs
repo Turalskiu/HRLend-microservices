@@ -13,6 +13,7 @@ namespace TestGeneratorApi.Repository
         Task<string> InsertTestModule(Module testModule);
         Task<bool> UpdateTestModule(Module testModule);
         Task<bool> DeleteTestModule(string link);
+        Task<bool> IsDefaultTestModule(string link);
     }
 
     public class TestModuleRepository : ITestModuleRepository
@@ -26,6 +27,24 @@ namespace TestGeneratorApi.Repository
             _db = db;
         }
 
+        public async Task<bool> IsDefaultTestModule(string link) 
+        {
+            var client = new MongoClient(_connectionString);
+            var database = client.GetDatabase(_db);
+            var collection = database.GetCollection<Module>("test_module");
+
+            var filter = Builders<Module>.Filter.Eq("_id", ObjectId.Parse(link));
+            var projection = Builders<Module>.Projection.Include("options.is_default");
+
+            var document = await collection.Find(filter).Project(projection).FirstOrDefaultAsync();
+
+            if (document == null)
+            {
+                throw new Exception("Document not found.");
+            }
+
+            return document["options"]["is_default"].AsBoolean;
+        }
         public async Task<Module?> GetTestModule(string link)
         {
             var client = new MongoClient(_connectionString);

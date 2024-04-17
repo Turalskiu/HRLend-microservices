@@ -36,16 +36,29 @@ namespace TestGeneratorApi.Services
 
         public override async Task<ResultModification> UpdateTestModule(Module testModule, ServerCallContext context)
         {
-            return await Task.FromResult(new ResultModification
-                {
-                    Result = await _testModuleRepository.UpdateTestModule(testModule)
-                }
-            );
+            ResultModification res = new ResultModification
+            {
+                IsCreate = false
+            };
+
+            bool IsDefault = await _testModuleRepository.IsDefaultTestModule(testModule.Id);
+
+            if (!IsDefault)
+            {
+                await _testModuleRepository.UpdateTestModule(testModule);
+                return res;
+            }
+
+            string link = await _testModuleRepository.InsertTestModule(testModule);
+            res.IsCreate = true;
+            res.NewTestModuleLink = link;
+
+            return res;
         }
 
-        public override async Task<ResultModification> DeleteTestModule(Link link, ServerCallContext context)
+        public override async Task<ResultDelete> DeleteTestModule(Link link, ServerCallContext context)
         {
-            return await Task.FromResult(new ResultModification
+            return await Task.FromResult(new ResultDelete
                 {
                     Result = await _testModuleRepository.DeleteTestModule(link.Link_)
                 }

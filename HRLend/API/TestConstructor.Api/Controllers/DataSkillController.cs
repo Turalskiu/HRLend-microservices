@@ -26,17 +26,20 @@ namespace HRApi.Controllers
         private ISkillRepository _skillRepository;
         private ITestModuleRepository _testModuleRepository;
         private IKnowledgeBaseRepository _knowledgeBaseRepository;
+        private ILogger<DataSkillController> _logger;
 
 
         public DataSkillController(
             ISkillRepository skillRepository,
             ITestModuleRepository testModuleRepository,
-            IKnowledgeBaseRepository knowledgeBaseRepository
+            IKnowledgeBaseRepository knowledgeBaseRepository,
+            ILogger<DataSkillController> logger
             )
         {
             _skillRepository = skillRepository;
             _testModuleRepository = testModuleRepository;
             _knowledgeBaseRepository = knowledgeBaseRepository;
+            _logger = logger;
         }
 
 
@@ -108,7 +111,6 @@ namespace HRApi.Controllers
                 _skillRepository.UpdateSkill(new Skill
                 {
                     Id = skill.Id,
-                    TestModuleLink = skill.TestModuleLink,
                     Title = skill.Title
                 });
                 return Ok();
@@ -322,24 +324,35 @@ namespace HRApi.Controllers
         [SwaggerResponse(401, "Не авторизован")]
         [SwaggerResponse(403, "Нет прав")]
         [SwaggerResponse(500, "Не удалось обновить тест, сервис не отвечает")]
-        public async Task<IActionResult> UpdateTestModule(Module module)
+        public async Task<IActionResult> UpdateTestModule(int skill_id, Module module)
         {
             try
             {
                 module.Options.IsDefault = false;
-                if (await _testModuleRepository.UpdateTestModule(module))
-                    return Ok();
+                ResultModification res = await _testModuleRepository.UpdateTestModule(module);
 
+                if (res.IsCreate)
+                {
+                    _skillRepository.UpdateSkillRowTestModuleLink(new Skill
+                    {
+                        Id = skill_id,
+                        TestModuleLink = res.NewTestModuleLink
+                    });
+                }
+
+                return Ok();
             }
             catch (RpcException ex)
             {
                 // Проверяем, является ли статус "Cancelled"
                 if (ex.Status.StatusCode == Grpc.Core.StatusCode.Cancelled)
                 {
+                    _logger.LogInformation(ex.Message);
                     return NotFound("Элемент не найден");
                 }
                 else
                 {
+                    _logger.LogInformation(ex.Message);
                     return StatusCode(500, "Ошибка сервера");
                 }
             }

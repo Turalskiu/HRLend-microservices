@@ -14,6 +14,7 @@ namespace HRApi.Repository.SqlDB
         int InsertSkill(Skill skill);
         int CopySkill(int cabinetId, CD_GRPC.SkillCopy copy);
         void UpdateSkill(Skill skill);
+        void UpdateSkillRowTestModuleLink(Skill skill);
         void DeleteSkill(int id);
         Skill? GetSkill(int id, int cabinetId);
         IEnumerableWithPage<Skill> SelectSkill(Page page, int cabinetId);
@@ -78,14 +79,29 @@ namespace HRApi.Repository.SqlDB
             var parames = new List<KeyValuePair<string, object>>()
             {
                 new KeyValuePair<string, object>("@Id", skill.Id),
-                new KeyValuePair<string, object>("@Title", skill.Title??string.Empty),
-                new KeyValuePair<string, object>("@TestModuleLink", skill.TestModuleLink??string.Empty)
+                new KeyValuePair<string, object>("@Title", skill.Title??string.Empty)
             };
 
             string queryParam = parames.CreateParameterListString();
 
             _connectionString.ExecuteNonQuery(
                 "call hr.skill__update(" + queryParam + ")",
+                false,
+                parames
+            );
+        }
+        public void UpdateSkillRowTestModuleLink(Skill skill)
+        {
+            var parames = new List<KeyValuePair<string, object>>()
+            {
+                new KeyValuePair<string, object>("@Id", skill.Id),
+                new KeyValuePair<string, object>("@TestModuleLink", skill.TestModuleLink??string.Empty)
+            };
+
+            string queryParam = parames.CreateParameterListString();
+
+            _connectionString.ExecuteNonQuery(
+                "call hr.skill__update_test_module_link(" + queryParam + ")",
                 false,
                 parames
             );
