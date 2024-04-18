@@ -40,19 +40,23 @@ namespace TestApi.Services
                     skill.RequiredCode = s.RequiredCode;
                     skill.IdTestModule = s.IdTestModule;
 
-                    TR.TestModuleResult testModuleResult =testResult.TestModuleResult.FirstOrDefault(r => r.TestModuleId == s.IdTestModule);
+                    TR.TestModuleResult? testModuleResult =testResult.TestModuleResult.FirstOrDefault(r => r.TestModuleId == s.IdTestModule);
 
-                    skill.IsPassed = testModuleResult.UserResult.IsPassed;
+                    if(testModuleResult != null)
+                    {
+                        skill.IsPassed = testModuleResult.UserResult.IsPassed;
 
-                    if(testModuleResult.UserResult.Values != 0)
-                        skill.Percent = (double)((double)testModuleResult.UserResult.Values / (double)testModuleResult.MaxValue) * 100.0;
+                        if (testModuleResult.UserResult.Values != 0)
+                            skill.Percent = (double)((double)testModuleResult.UserResult.Values / (double)testModuleResult.MaxValue) * 100.0;
 
-                    if (skill.RequiredCode == (int)SKILL_NEED.REQUIRE_HARD && !skill.IsPassed)
-                        is_passed_competence = false;
+                        if (skill.RequiredCode == (int)SKILL_NEED.REQUIRE_HARD && !skill.IsPassed)
+                            is_passed_competence = false;
 
-                    if(skill.IsPassed) count_passed_slill++;
+                        if (skill.IsPassed) count_passed_slill++;
 
-                    comp.Skills.Add(skill);
+                        comp.Skills.Add(skill);
+                    }
+
                 }
                 comp.IsPassed = is_passed_competence;
 
