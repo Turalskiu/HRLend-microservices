@@ -64,8 +64,8 @@ services:
     container_name: authorization-api
     image: ${DOCKER_REGISTRY-}authorizationapi
     build:
-      context: /API/Authorization.Api
-      dockerfile: Dockerfile
+      context: /
+      dockerfile: API/Authorization.Api/Dockerfile
     depends_on:
       postgres-db:
         condition: service_healthy
@@ -94,8 +94,8 @@ services:
     container_name: test-generator-api
     image: ${DOCKER_REGISTRY-}testgeneratorapi
     build:
-      context: /API/TestGenerator.Api
-      dockerfile: Dockerfile
+      context: /
+      dockerfile: API/TestGenerator.Api/Dockerfile
     depends_on:
       mongo-db:
         condition: service_healthy
@@ -116,8 +116,8 @@ services:
     container_name: knowledge-base-api
     image: ${DOCKER_REGISTRY-}knowledgebaseapi
     build:
-      context: /API/KnowledgeBase.Api
-      dockerfile: Dockerfile
+      context: /
+      dockerfile: API/KnowledgeBase.Api/Dockerfile
     depends_on:
       mongo-db:
         condition: service_healthy
@@ -143,8 +143,8 @@ services:
     container_name: test-constructor-api
     image: ${DOCKER_REGISTRY-}testconstructorapi
     build:
-      context: /API/TestConstructor.Api
-      dockerfile: Dockerfile
+      context: /
+      dockerfile: API/TestConstructor.Api/Dockerfile
     depends_on:
       postgres-db:
         condition: service_healthy
@@ -181,8 +181,8 @@ services:
     container_name: test-api
     image: ${DOCKER_REGISTRY-}testapi
     build:
-      context: /API/Test.Api
-      dockerfile: Dockerfile
+      context: /
+      dockerfile: API/Test.Api/Dockerfile
     depends_on:
       postgres-db:
         condition: service_healthy
@@ -229,8 +229,8 @@ services:
     container_name: statistic-api
     image: ${DOCKER_REGISTRY-}statisticapi
     build:
-      context: /API/Statistic.Api
-      dockerfile: Dockerfile
+      context: /
+      dockerfile: API/Statistic.Api/Dockerfile
     depends_on:
       mongo-db:
         condition: service_healthy
@@ -257,8 +257,8 @@ services:
     container_name: assistant-api
     image: ${DOCKER_REGISTRY-}assistantapi
     build:
-      context: /API/Assistant.Api
-      dockerfile: Dockerfile
+      context: /
+      dockerfile: API/Assistant.Api/Dockerfile
     depends_on:
       postgres-db:
         condition: service_healthy
