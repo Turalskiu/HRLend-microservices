@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Npgsql;
 using Swashbuckle.AspNetCore.Annotations;
+using Authorization.Api.Models.DTO.Request;
 
 namespace AuthorizationApi.Controllers
 {
@@ -221,7 +222,7 @@ namespace AuthorizationApi.Controllers
         [HttpPost("update-password/send-code")]
         [SwaggerResponse(200, "Успешный запрос")]
         [SwaggerResponse(401, "Не авторизован")]
-        public IActionResult SendCodeForUpdatePassword(string password)
+        public IActionResult SendCodeForUpdatePassword(UpdatePasswordRequest password)
         {
             var userSession = (UserSession)ControllerContext.HttpContext.Items["User"];
             var user = _userRepository.GetUser(userSession.Id);
@@ -230,7 +231,7 @@ namespace AuthorizationApi.Controllers
             UpdatePasswordSession updatePasswordModel = new UpdatePasswordSession
             {
                 UserId = user.Id,
-                NewPassword = password,
+                NewPassword = password.NewPassword,
                 Code = code
             };
 
