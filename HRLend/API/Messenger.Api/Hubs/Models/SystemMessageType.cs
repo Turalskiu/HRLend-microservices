@@ -1,12 +1,5 @@
 ﻿namespace Messenger.Api.Hubs.Models
 {
-    public class SystemMessage
-    {
-        public SYSTEM_MESSAGE_TYPE Type { get; set; }
-        public string Message { get; set; }
-        public DateTime CreateDate { get; set; }
-    }
-
     public enum SYSTEM_MESSAGE_TYPE
     {
         DELETE_CHAT = 1,

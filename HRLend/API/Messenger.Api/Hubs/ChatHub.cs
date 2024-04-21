@@ -1,5 +1,8 @@
 ﻿using Messenger.Api.Attributes;
+using Messenger.Api.Domain.Chat;
 using Messenger.Api.Hubs.Models;
+using Messenger.Api.Hubs.Models.Request;
+using Messenger.Api.Hubs.Models.Response;
 using Messenger.Api.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
@@ -54,7 +57,7 @@ namespace Messenger.Api.SignalRHubs
             {
                 string guid = Guid.NewGuid().ToString();
 
-                UserMessage mes = new UserMessage
+                UserMessageResponse mes = new UserMessageResponse
                 {
                     Guid = guid,
                     Message = message,
@@ -81,36 +84,120 @@ namespace Messenger.Api.SignalRHubs
 
 
         //отправить системное сообщение
-        public async Task SendSystemMessage(
-            UserConnection userConnection,
-            SYSTEM_MESSAGE_TYPE type,
-            string message
-            )
+        public async Task SendSystemMessage(SystemMessageRequest request)
         {
-
-            SystemMessage mes = new SystemMessage
+            if (_connections.TryGetValue(Context.ConnectionId, out UserConnection sender))
             {
-                Type = type,
-                Message = message,
-                CreateDate = DateTime.Now
-            };
+                SystemMessageResponse response = new SystemMessageResponse();
+                response.CreateDate = DateTime.Now;
+                response.Type = request.Type;
 
-            if(type != SYSTEM_MESSAGE_TYPE.DELETE_CHAT
-                && type != SYSTEM_MESSAGE_TYPE.DELETE_MESSAGE)
-            {
-                _chatRepository.InsertMessageChat(userConnection.ChatLink, new Domain.Chat.Message
+                if (request.Type == SYSTEM_MESSAGE_TYPE.DELETE_CHAT) {}   //удаление чата
+                else if(request.Type == SYSTEM_MESSAGE_TYPE.DELETE_MESSAGE)   //удаления сообщения
                 {
-                    Guid = null,
-                    IsSystem = true,
-                    User = null,
-                    DateCreated = mes.CreateDate,
-                    Text = message
-                });
+                    if(sender.UserId == request.DeleteMessageInfo.CreatorId 
+                        || await _chatRepository.IsCreator(sender.ChatLink, sender.UserId))
+                    {
+                        _chatRepository.DeleteMessageChat(sender.ChatLink, request.DeleteMessageInfo.MessageGuid);
+
+                        response.DeleteMessageInfo = new DeleteMessageInfoResponse
+                        {
+                            MessageGuid = request.DeleteMessageInfo.MessageGuid
+                        };
+                    }
+                }
+                else if(request.Type == SYSTEM_MESSAGE_TYPE.DELETE_USER)  //удалить пользователя из чата
+                {
+                    if(await _chatRepository.IsCreator(sender.ChatLink, sender.UserId))
+                    {
+                        _chatRepository.DeleteUserChat(sender.ChatLink, request.DeleteUserInfo.UserId);
+
+                        string message = $"{sender.Username} исключил {request.DeleteUserInfo.Username}";
+
+                        _chatRepository.InsertMessageChat(sender.ChatLink, new Domain.Chat.Message
+                        {
+                            Guid = null,
+                            IsSystem = true,
+                            User = null,
+                            DateCreated = DateTime.Now,
+                            Text = message
+                        });
+
+                        response.Message = message;
+                    }
+                }
+                else if(request.Type == SYSTEM_MESSAGE_TYPE.ADD_USER)  //добавить пользователя в чат
+                {
+                    if(await _chatRepository.IsCreator(sender.ChatLink, sender.UserId))
+                    {
+                        await _chatRepository.InsertUserChat(sender.ChatLink, new User
+                        {
+                            UserId = request.AddUserInfo.UserId,
+                            Username = request.AddUserInfo.Username,
+                            Photo = request.AddUserInfo.Photo
+                        });
+
+                        string message = $"{sender.Username} пригласил {request.AddUserInfo.Username}";
+
+                        _chatRepository.InsertMessageChat(sender.ChatLink, new Domain.Chat.Message
+                        {
+                            Guid = null,
+                            IsSystem = true,
+                            User = null,
+                            DateCreated = DateTime.Now,
+                            Text = message
+                        });
+
+                        response.Message = message;
+                    }
+                }
+                else if (request.Type == SYSTEM_MESSAGE_TYPE.EXIT_USER)  //пользователь покинул чат
+                {
+                    _chatRepository.DeleteUserChat(sender.ChatLink, sender.UserId);
+
+                    string message = $"{sender.Username} покинул чат";
+
+                    _chatRepository.InsertMessageChat(sender.ChatLink, new Domain.Chat.Message
+                    {
+                        Guid = null,
+                        IsSystem = true,
+                        User = null,
+                        DateCreated = DateTime.Now,
+                        Text = message
+                    });
+
+                    response.Message = message;
+
+                    await Groups.RemoveFromGroupAsync(Context.ConnectionId, sender.ChatLink);
+                    _connections.Remove(Context.ConnectionId);
+                }
+                else if (request.Type == SYSTEM_MESSAGE_TYPE.UPDATE_CHAT_TITLE)  //обновить название чата
+                {
+                    if (await _chatRepository.IsCreator(sender.ChatLink, sender.UserId))
+                    {
+                        await _chatRepository.UpdateTitleChat(sender.ChatLink, request.UpdateChatTitleInfo.NewTitle);
+
+                        string message = $"{sender.Username} поменял название чата на {request.UpdateChatTitleInfo.NewTitle}";
+
+                        _chatRepository.InsertMessageChat(sender.ChatLink, new Domain.Chat.Message
+                        {
+                            Guid = null,
+                            IsSystem = true,
+                            User = null,
+                            DateCreated = DateTime.Now,
+                            Text = message
+                        });
+
+                        response.Message = message;
+                        response.UpdateChatTitleInfo = new UpdateChatTitleInfoResponse
+                        {
+                            NewTitle = request.UpdateChatTitleInfo.NewTitle
+                        };
+                    }
+                }
+
+                await Clients.Group(sender.ChatLink).SendAsync("ReceiveSystemMessage", sender, response);
             }
-
-
-            await Clients.Group(userConnection.ChatLink).SendAsync("ReceiveSystemMessage", userConnection, mes);
-
         }
 
 

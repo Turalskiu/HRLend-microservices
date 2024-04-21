@@ -1,6 +1,6 @@
-﻿namespace Messenger.Api.Hubs.Models
+﻿namespace Messenger.Api.Hubs.Models.Response
 {
-    public class UserMessage
+    public class UserMessageResponse
     {
         public string Guid { get; set; }
         public string Message { get; set; }
