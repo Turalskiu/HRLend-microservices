@@ -20,6 +20,8 @@
 
     public class CompetencyQM
     {
+        public int TestId { get; set; }
+        public string TestTitle { get; set; }
         public string Title { get; set; }
         public DateTime DateCreate { get; set; }
         public double Percent { get; set; }
@@ -27,6 +29,8 @@
 
     public class SkillQM
     {
+        public int TestId { get; set; }
+        public string TestTitle { get; set; }
         public string Title { get; set; }
         public DateTime DateCreate { get; set; }
         public double Percent { get; set; }

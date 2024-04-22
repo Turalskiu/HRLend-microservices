@@ -17,6 +17,10 @@ namespace StatisticApi.Domain
 
     public class Competency
     {
+        [BsonElement("test_id")]
+        public int TestId { get; set; }
+        [BsonElement("test_title")]
+        public string TestTitle { get; set; }
         [BsonElement("title")]
         public string Title { get; set; }
 
@@ -29,6 +33,10 @@ namespace StatisticApi.Domain
 
     public class Skill
     {
+        [BsonElement("test_id")]
+        public int TestId { get; set; }
+        [BsonElement("test_title")]
+        public string TestTitle { get; set; }
         [BsonElement("title")]
         public string Title { get; set; }
 

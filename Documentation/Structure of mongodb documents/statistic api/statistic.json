@@ -10,6 +10,8 @@
 
     "competencies":[
         {
+            "test_id" : 1,
+            "test_title" : "fff",
             "title" : "Стрессоустойчивость",
             "date_create": "2022-07-26T15:00:00.000Z",
             "percent": 45
@@ -18,6 +20,8 @@
 
     "skills":[
         {
+            "test_id" : 1,
+            "test_title" : "fff",
             "title" : "Стрессоустойчивость",
             "date_create": "2022-07-26T15:00:00.000Z",
             "percent": 45

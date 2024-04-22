@@ -69,54 +69,39 @@ namespace StatisticApi.Services.Queue.Consumer
             if (message.MessageType == (int)USER_STATISTIC_TYPE.TEST)
             {
                 var statistic = await _staticRepository.GetStatistic(message.User.UserId);
-                if(statistic is not null)
+
+                var stat = new UserStatistic
                 {
-                    await _staticRepository.UpdateStatisticCompetenceAndSkill(new UserStatistic
+                    User = new User
                     {
-                        User = new User
-                        {
-                            UserId = message.User.UserId,
-                            Email = message.User.Email,
-                            Username = message.User.Username
-                        },
-                        Competencies = message.Competencies.Select(c => new Competency
-                        {
-                            Title = c.Title,
-                            DateCreate = c.DateCreate,
-                            Percent = c.Percent
-                        }).ToList(),
-                        Skills = message.Skills.Select(c => new Skill
-                        {
-                            Title = c.Title,
-                            DateCreate = c.DateCreate,
-                            Percent = c.Percent
-                        }).ToList()
-                    });
-                }
+                        UserId = message.User.UserId,
+                        Email = message.User.Email,
+                        Username = message.User.Username
+                    },
+                    Competencies = message.Competencies.Select(c => new Competency
+                    {
+                        TestId = c.TestId,
+                        TestTitle = c.TestTitle,
+                        Title = c.Title,
+                        DateCreate = c.DateCreate,
+                        Percent = c.Percent
+                    }).ToList(),
+                    Skills = message.Skills.Select(c => new Skill
+                    {
+                        TestId = c.TestId,
+                        TestTitle = c.TestTitle,
+                        Title = c.Title,
+                        DateCreate = c.DateCreate,
+                        Percent = c.Percent
+                    }).ToList()
+                };
+
+                if (statistic is not null)
+                    await _staticRepository.UpdateStatisticCompetenceAndSkill(stat);
+  
                 else
-                {
-                    await _staticRepository.InsertStatistic(new UserStatistic
-                    {
-                        User = new User
-                        {
-                            UserId = message.User.UserId,
-                            Email = message.User.Email,
-                            Username = message.User.Username
-                        },
-                        Competencies = message.Competencies.Select(c => new Competency
-                        {
-                            Title = c.Title,
-                            DateCreate = c.DateCreate,
-                            Percent = c.Percent
-                        }).ToList(),
-                        Skills = message.Skills.Select(c => new Skill
-                        {
-                            Title = c.Title,
-                            DateCreate = c.DateCreate,
-                            Percent = c.Percent
-                        }).ToList()
-                    });
-                }
+                    await _staticRepository.InsertStatistic(stat);
+
             }
         }
     }

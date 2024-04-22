@@ -262,6 +262,8 @@ namespace TestApi.Controllers
                     },
                     Competencies = statistics.Competencies.Select(c=>new CompetencyQM
                     {
+                        TestId = session.Test.Id,
+                        TestTitle = session.Test.Title,
                         Title = c.Title,
                         Percent = c.Percent,
                         DateCreate = date
@@ -272,6 +274,8 @@ namespace TestApi.Controllers
                 {
                     userStatisticQM.Skills.UnionWith(c.Skills.Select(s => new SkillQM
                     {
+                        TestId = session.Test.Id,
+                        TestTitle = session.Test.Title,
                         Title = s.Title,
                         Percent = s.Percent,
                         DateCreate = date
