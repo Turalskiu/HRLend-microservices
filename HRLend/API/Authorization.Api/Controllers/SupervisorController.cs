@@ -1,4 +1,5 @@
-﻿using AuthorizationApi.Attributes;
+﻿using Authorization.Api.Models.DTO.Response.RegistrationTokenResponse;
+using AuthorizationApi.Attributes;
 using AuthorizationApi.Models;
 using AuthorizationApi.Models.DTO.Request;
 using AuthorizationApi.Models.DTO.Response.RegistrationTokenResponse;
@@ -93,7 +94,7 @@ namespace AuthorizationApi.Controllers
         /// только с правами hr-ов и сотрудников.
         /// </remarks>
         [HttpPost("create/registration-token")]
-        [SwaggerResponse(200, "Успешный запрос")]
+        [SwaggerResponse(200, "Успешный запрос", typeof(CreateRegistrationTokenResponse))]
         [SwaggerResponse(400, "Не верные данные")]
         [SwaggerResponse(401, "Не авторизован")]
         [SwaggerResponse(403, "Нет прав")]
@@ -103,10 +104,12 @@ namespace AuthorizationApi.Controllers
 
             if(token.CabinetRole == (int)ROLE.CABINET_HR || token.CabinetRole == (int)ROLE.CABINET_EMPLOYEE)
             {
+                string tt = Guid.NewGuid().ToString();
+
                 bool result = _cabinetRepository.InsertRegistrationToken(new RegistrationToken
                 {
                     UserId = userSession.Id,
-                    Token = Guid.NewGuid().ToString(),
+                    Token = tt,
                     Expires = token.Expires,
                     Cabinet = userSession.CabinetId,
                     CabinetRole = token.CabinetRole,
@@ -114,7 +117,7 @@ namespace AuthorizationApi.Controllers
                     CreatedByIp = ipAddress()
                 });
 
-                if (result) return Ok();
+                if (result) return Ok(new CreateRegistrationTokenResponse { RegistrationToken = tt});
                 return BadRequest();
             }
 

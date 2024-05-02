@@ -9,6 +9,7 @@ using Swashbuckle.AspNetCore.Annotations;
 using AuthorizationApi.Models.DTO.Response.RegistrationTokenResponse;
 using AuthorizationApi.Services.Queue;
 using Contracts.Authorization.Queue;
+using Authorization.Api.Models.DTO.Response.RegistrationTokenResponse;
 
 namespace AuthorizationApi.Controllers
 {
@@ -223,8 +224,8 @@ namespace AuthorizationApi.Controllers
         /// только с правами кандидатов и сотрудников.
         /// </remarks>
         [HttpPost("create/registration-token")]
-        [SwaggerResponse(200, "Успешный запрос")]
-        [SwaggerResponse(400, "Не верныйе данные токена")]
+        [SwaggerResponse(200, "Успешный запрос", typeof(CreateRegistrationTokenResponse))]
+        [SwaggerResponse(400, "Не верные данные токена")]
         [SwaggerResponse(401, "Не авторизован")]
         [SwaggerResponse(403, "Нет прав")]
         public IActionResult CreateRegistrationToken(RegistrationTokenRequest token)
@@ -233,6 +234,8 @@ namespace AuthorizationApi.Controllers
 
             if (token.CabinetRole == (int)ROLE.CABINET_CANDIDATE || token.CabinetRole == (int)ROLE.CABINET_EMPLOYEE)
             {
+                string tt = Guid.NewGuid().ToString();
+
                 bool result = _cabinetRepository.InsertRegistrationToken(new RegistrationToken
                 {
                     UserId = userSession.Id,
@@ -244,7 +247,7 @@ namespace AuthorizationApi.Controllers
                     CreatedByIp = ipAddress()
                 });
 
-                if (result) return Ok();
+                if (result) return Ok(new CreateRegistrationTokenResponse { RegistrationToken = tt });
                 return BadRequest();
             }
 
