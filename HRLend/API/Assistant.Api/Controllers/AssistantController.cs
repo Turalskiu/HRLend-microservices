@@ -76,7 +76,8 @@ namespace Assistant.Api.Controllers
             List<Block> blocks = await _elasticsearchRepository.FindBlocks(documentId, subject, 4);
 
             string promt = templatePromt
-                .Replace("{questionCount}", count.ToString());
+                .Replace("{questionCount}", count.ToString())
+                .Replace("{subject}", subject);
 
             for(int i = 0; i < 4; i++)
             {
