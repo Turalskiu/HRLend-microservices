@@ -37,7 +37,7 @@ namespace Messenger.Api.Domain.Chat
         public string Username { get; set; }
 
         [BsonElement("photo")]
-        public string Photo { get; set; }
+        public string? Photo { get; set; }
     }
 
     public class Message

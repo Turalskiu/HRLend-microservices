@@ -7,4 +7,5 @@ namespace Messenger.Api.Domain.DTO.Request
         public string Title { get; set; }
         public List<User> Users { get; set; }
     }
+
 }
