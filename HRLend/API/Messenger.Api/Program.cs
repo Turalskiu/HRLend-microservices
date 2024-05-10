@@ -58,7 +58,7 @@ builder.Services.Configure<AppSetting>(builder.Configuration.GetSection("AppSett
 builder.Services.AddSingleton<IDictionary<string, UserConnection>>(opts => new Dictionary<string, UserConnection>());
 
 builder.Services.AddScoped<IJwtUtils, JwtUtils>();
-builder.Services.AddScoped<IChatRepository, ChatRepository>(ur => new ChatRepository(chat, "chat"));
+builder.Services.AddScoped<IChatRepository, ChatRepository>(ur => new ChatRepository(chat, "Chat"));
 
 
 var app = builder.Build();

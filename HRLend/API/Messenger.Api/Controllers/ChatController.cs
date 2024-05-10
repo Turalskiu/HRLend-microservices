@@ -9,7 +9,7 @@ using Swashbuckle.AspNetCore.Annotations;
 
 namespace Messenger.Api.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Route("chat")]
     [ApiController]
     public class ChatController : ControllerBase
