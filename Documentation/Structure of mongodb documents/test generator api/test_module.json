@@ -44,32 +44,6 @@
                     "text": "Плохо!"
                 }
             ]
-        },
-
-        {
-            "id": "ea03ec8d-4c94-43b3-1943-41d6b041d756",
-            "text": "Какие типы данных имеются в языке программирования c#?",
-            "description": "",
-            "type": "checkbox",
-            "max_value": 1, 
-
-            "options":[
-                {
-                    "id": "ea03ec8d-4c04-43b3-1943-41d6b041d758",
-                    "is_true": false,
-                    "text": "Хорошие"
-                },
-                {
-                    "id": "ea03ec8d-4c94-43b3-1943-51d6b041d758",
-                    "is_true": true,
-                    "text": "int"
-                },
-                {
-                    "id": "ea03ec8d-4994-43b3-1943-41d6b041d758",
-                    "is_true": true,
-                    "text": "string"
-                }
-            ]
         }
     ]
 }

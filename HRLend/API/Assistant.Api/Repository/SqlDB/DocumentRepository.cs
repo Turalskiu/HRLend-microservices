@@ -2,7 +2,7 @@
 using Helpers.Db.Postgres;
 using System.Data;
 
-namespace Assistant.Api.Repository
+namespace Assistant.Api.Repository.SqlDB
 {
     public interface IDocumentRepository
     {
@@ -28,6 +28,7 @@ namespace Assistant.Api.Repository
             {
                 new KeyValuePair<string, object>("@CabinetId", doc.CabinetId),
                 new KeyValuePair<string, object>("@Title", doc.Title??string.Empty),
+                new KeyValuePair<string, object>("@TypeId", doc.Type.Id),
                 new KeyValuePair<string, object>("@ElasticsearchIndex", doc.ElasticsearchIndex??string.Empty),
                 new KeyValuePair<string, object>("@IdDocument", 0)
             };
@@ -93,9 +94,13 @@ namespace Assistant.Api.Repository
                 {
                     Id = record.Get<int>("id"),
                     CabinetId = cabinetId,
+                    Type = new DocumentType
+                    {
+                        Id = record.Get<int>("type_id"),
+                        Title = record.Get<string>("type_title")
+                    },
                     Title = record.Get<string>("title"),
                     ElasticsearchIndex = record.Get<string>("elasticsearch_index")
-
                 };
                 return entity;
             };
@@ -105,9 +110,9 @@ namespace Assistant.Api.Repository
                 new KeyValuePair<string, object>("@CabinetId", cabinetId)
             };
 
-            string queryParam = PostgresHelper.CreateParameterListString(parames);
+            string queryParam = parames.CreateParameterListString();
 
-            return _connectionString.ExecuteSelect<Document>(
+            return _connectionString.ExecuteSelect(
                 "select * from assistant.document__select(" + queryParam + ");",
                 convertDocument,
                 parames

@@ -1,12 +1,16 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using AssistantApi.Attributes;
-using Assistant.Api.Repository;
 using Assistant.Api.Services;
 using Assistant.Api.Domain.Gpt;
 using Swashbuckle.AspNetCore.Annotations;
 using Newtonsoft.Json;
 using Assistant.Api.Domain.Elasticsearch;
+using Assistant.Api.Repository.SqlDB;
+using Assistant.Api.Repository.Folder;
+using Assistant.Api.Repository.Elasticsearch;
+using Assistant.Api.Domain.DTO.Request.Gpt;
+using Assistant.Api.Domain.DTO.Response.Gpt;
 
 
 namespace Assistant.Api.Controllers
@@ -14,16 +18,16 @@ namespace Assistant.Api.Controllers
     [Route("assistant")]
     [Authorize(Role = "cabinet_hr")]
     [ApiController]
-    public class AssistantController : ControllerBase
+    public class AssistantTestController : ControllerBase
     {
         private readonly IDocumentRepository _documentRepository;
         private readonly IElasticsearchRepository _elasticsearchRepository;
         private readonly IPromtRepository _promtRepository;
         private readonly IGptService _gptService;
 
-        private int _countBlock = 2;
+        private int _countBlock = 4;
 
-        public AssistantController(
+        public AssistantTestController(
             IDocumentRepository documentRepository,
             IElasticsearchRepository elasticsearchRepository,
             IPromtRepository promtRepository,
@@ -97,7 +101,6 @@ namespace Assistant.Api.Controllers
 
             return Ok(questions);
         }
-
 
 
         /// <summary>

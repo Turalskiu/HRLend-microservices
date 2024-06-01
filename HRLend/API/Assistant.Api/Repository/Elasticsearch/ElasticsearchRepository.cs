@@ -2,7 +2,7 @@
 using Nest;
 
 
-namespace Assistant.Api.Repository
+namespace Assistant.Api.Repository.Elasticsearch
 {
 
     public interface IElasticsearchRepository
@@ -25,10 +25,10 @@ namespace Assistant.Api.Repository
         readonly string _index;
 
         public ElasticsearchRepository(
-            string url, 
+            string url,
             string username,
             string password,
-            string index) 
+            string index)
         {
             _url = url;
             _username = username;
@@ -38,7 +38,7 @@ namespace Assistant.Api.Repository
             var settings = new ConnectionSettings(new Uri(_url))
                 .ServerCertificateValidationCallback((o, certificate, chain, errors) => true)
                 .BasicAuthentication(_username, _password);
-                //.ApiKeyAuthentication(_apiKeyId, _apiKey);
+            //.ApiKeyAuthentication(_apiKeyId, _apiKey);
 
             _client = new ElasticClient(settings);
         }
@@ -87,7 +87,7 @@ namespace Assistant.Api.Repository
                             .Match(mt => mt
                                 .Field(f => f.Content)
                                 .Query(text)
-                                .Fuzziness(Nest.Fuzziness.Auto)
+                                .Fuzziness(Fuzziness.Auto)
                             ),
                             m => m
                                 .MatchPhrase(mp => mp
@@ -105,7 +105,7 @@ namespace Assistant.Api.Repository
             {
                 foreach (var hit in searchResponse.Hits)
                 {
-                    blocks.Add(new Block() 
+                    blocks.Add(new Block()
                     {
                         DocumentId = documentId,
                         Content = hit.Source.Content
@@ -165,7 +165,7 @@ namespace Assistant.Api.Repository
                 // Создание индекса с настройками анализа и маппингами
                 var createIndexResponse = await client.Indices.CreateAsync(index, c => c
                     .Settings(s => s
-                        .Analysis(a=>analysisSettings)
+                        .Analysis(a => analysisSettings)
                     )
                     .Map<Block>(m => m
                         .Properties(p => p

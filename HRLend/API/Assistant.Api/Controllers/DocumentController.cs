@@ -1,5 +1,4 @@
 ﻿using Assistant.Api.Domain;
-using Assistant.Api.Repository;
 using AssistantApi.Domain.Auth;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
@@ -7,6 +6,8 @@ using AssistantApi.Attributes;
 using Assistant.Api.Services;
 using Assistant.Api.Domain.DTO.Request;
 using Assistant.Api.Domain.Elasticsearch;
+using Assistant.Api.Repository.SqlDB;
+using Assistant.Api.Repository.Elasticsearch;
 
 
 namespace Assistant.Api.Controllers
@@ -81,6 +82,10 @@ namespace Assistant.Api.Controllers
             {
                 CabinetId = cabinetId,
                 Title = doc.Title,
+                Type = new DocumentType
+                {
+                    Id = doc.Type
+                },
                 ElasticsearchIndex = documentIndex
             });
 

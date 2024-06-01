@@ -22,11 +22,16 @@ CREATE OR REPLACE FUNCTION test.test_link_response_and_user__select(
 					t_l_r.user_id AS user_id,
 					u.username AS username,
 					u.email AS user_email,
-					u.photo AS user_photo
+					u.photo AS user_photo,
+					t_r.id AS test_result_id,
+					t_r.test_result_link AS test_result_link,
+					t_r.test_template_statistics_link AS test_template_statistics_link,
+					t_r.is_passed AS test_is_passed
 				FROM test.test_link_response AS t_l_r
 				JOIN test.test_link_response_status AS t_l_r_s ON t_l_r.status_id = t_l_r_s.id
 				LEFT JOIN test.anonymous_user AS a_u ON a_u.test_link_response_id = t_l_r.id
 				LEFT JOIN test.user AS u ON u.id = t_l_r.user_id
+				LEFT JOIN test.test_result AS t_r ON t_r.test_link_response_id = t_l_r.id
 				WHERE t_l_r.test_link_id = _test_link_id
 				ORDER BY
 					CASE WHEN _sort = 'asc' THEN t_l_r.date_create END ASC,

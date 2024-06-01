@@ -3,8 +3,10 @@ using AssistantApi.Middleware;
 using AssistantApi.Settings;
 using AssistantApi.Utils;
 using System.Reflection;
-using Assistant.Api.Repository;
 using Assistant.Api.Services;
+using Assistant.Api.Repository.SqlDB;
+using Assistant.Api.Repository.Folder;
+using Assistant.Api.Repository.Elasticsearch;
 
 var builder = WebApplication.CreateBuilder(args);
 

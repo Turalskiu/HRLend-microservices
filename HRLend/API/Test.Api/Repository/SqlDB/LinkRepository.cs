@@ -513,6 +513,18 @@ namespace TestApi.Repository.SqlDB
                     };
                 }
 
+                var testResultId = record.GetN<int?>("test_result_id");
+                if (testResultId != null)
+                {
+                    entity.TestResult = new TestResult
+                    {
+                        Id = (int)testResultId,
+                        TestResultLink = record.GetN<string?>("test_result_link"),
+                        TestTemplateStatisticsLink = record.Get<string>("test_template_statistics_link"),
+                        IsPassed = record.GetN<bool>("test_is_passed")
+                    };
+                }
+
                 list.Add(entity);
             };
 

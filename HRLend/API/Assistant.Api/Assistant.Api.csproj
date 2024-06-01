@@ -28,8 +28,4 @@
     <ProjectReference Include="..\..\Helpers\Helpers.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Domain\DTO\Response\" />
-  </ItemGroup>
-
 </Project>

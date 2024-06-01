@@ -3,8 +3,8 @@
 cat /dev/null > init-docker/script.sql
 
 cat 'Assistant\Assistant.sql' >> init-docker/script.sql
+cat 'Assistant\Tables\DocumentType.sql' >> init-docker/script.sql
 cat 'Assistant\Tables\Document.sql' >> init-docker/script.sql
-
 
 
 for file in $(find './Assistant/Functions' -type f -name "*.sql" | sort -n); do

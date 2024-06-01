@@ -1,8 +1,9 @@
-﻿namespace Assistant.Api.Repository
+﻿namespace Assistant.Api.Repository.Folder
 {
     public interface IPromtRepository
     {
         string GetQuestionGeneratorPromt(string title);
+        string GetCompanyPromt(string title);
 
     }
 
@@ -22,5 +23,11 @@
             return promt;
         }
 
+        public string GetCompanyPromt(string title)
+        {
+            string path = _path + "/Promts/CompanyInfo/" + title + ".txt";
+            string promt = File.ReadAllText(path);
+            return promt;
+        }
     }
 }

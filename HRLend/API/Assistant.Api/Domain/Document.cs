@@ -6,5 +6,7 @@
         public int CabinetId { get; set; }
         public string Title { get; set; }
         public string ElasticsearchIndex {  get; set; }
+
+        public DocumentType Type { get; set; }  
     }
 }

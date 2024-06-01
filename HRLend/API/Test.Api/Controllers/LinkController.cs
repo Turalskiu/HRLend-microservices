@@ -236,7 +236,7 @@ namespace TestApi.Controllers
         [SwaggerResponse(200, "Успешный запрос", typeof(ListTestLinkResponseResponse))]
         [SwaggerResponse(401, "Не авторизован")]
         [SwaggerResponse(403, "Нет прав")]
-        public async Task<ActionResult> GetPageResponsess(int test_link_id, int page_numb, int page_size, string sort)
+        public async Task<ActionResult> GetPageResponses(int test_link_id, int page_numb, int page_size, string sort)
         {
             var responses = _linkRepository.SelectTestLinkResponseAndUser(new Domain.DTO.Page
             {
@@ -277,6 +277,16 @@ namespace TestApi.Controllers
                         {
                             FirstName = r.AnonymousCandidate.FirstName,
                             Email = r.AnonymousCandidate.Email
+                        };
+                    }
+
+                    if (r.TestResult != null)
+                    {
+                        res.TestResult = new TestResultResponse
+                        {
+                            IsPassed = r.TestResult.IsPassed,
+                            TestResultLink = r.TestResult.TestResultLink,
+                            TestTemplateStatisticstLink = r.TestResult.TestTemplateStatisticsLink
                         };
                     }
 
