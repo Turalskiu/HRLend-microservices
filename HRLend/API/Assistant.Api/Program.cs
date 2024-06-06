@@ -86,10 +86,12 @@ else
     connectionStringSqlDB = $"Host={dbHost};Port={dbPort};Database={db};Username={dbUser};Password={dbPassword}";
 
     //elasticsearch
-    elasticsearchUrl = Environment.GetEnvironmentVariable("ELASTICSEARCH_DB_HOST");
+    var elasticsearchHost = Environment.GetEnvironmentVariable("ELASTICSEARCH_DB_HOST");
+    var elasticsearchPort = Environment.GetEnvironmentVariable("ELASTICSEARCH_DB_PORT");
     elasticsearchUsername = Environment.GetEnvironmentVariable("ELASTICSEARCH_DB_USER");
     elasticsearchPassword = Environment.GetEnvironmentVariable("ELASTICSEARCH_DB_PASSWORD");
     elasticsearchIndex = Environment.GetEnvironmentVariable("ELASTICSEARCH_DB_INDEX");
+    elasticsearchUrl = $"http://{elasticsearchHost}:{elasticsearchPort}";
 
     //gpt
     chadGptUrl = Environment.GetEnvironmentVariable("GPT_URL");
