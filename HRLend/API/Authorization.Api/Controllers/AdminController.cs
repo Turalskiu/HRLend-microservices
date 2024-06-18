@@ -14,7 +14,8 @@ using Swashbuckle.AspNetCore.Annotations;
 
 namespace AuthorizationApi.Controllers
 {
-    [Authorize(Role = "admin")]
+    //[Authorize(Role = "admin")]
+    [Authorize(Role = "cabinet_admin")]
     [Route("auth/[controller]")]
     [ApiController]
     public class AdminController : ControllerBase
@@ -86,7 +87,7 @@ namespace AuthorizationApi.Controllers
         [SwaggerResponse(200, "Успешный запрос")]
         [SwaggerResponse(401, "Не авторизован")]
         [SwaggerResponse(403, "Нет прав")]
-        public IActionResult SendMessage(MessageRequest message) 
+        public IActionResult SendMessage(MessageRequest message)
         {
             _mailService.SendMessage(message);
             return Ok();

@@ -70,20 +70,20 @@ namespace AuthorizationApi.Controllers
         /// <summary>
         /// Отправить сообщение пользователю кабинета
         /// </summary>
-        [HttpPost("send/message")]
-        [SwaggerResponse(200, "Успешный запрос")]
-        [SwaggerResponse(400, "Не верные данные, не возможно отправить сообщение пользователю")]
-        [SwaggerResponse(401, "Не авторизован")]
-        [SwaggerResponse(403, "Нет прав")]
-        public IActionResult SendMessage(MessageRequest message)
-        {
-            var userSession = (UserSession)ControllerContext.HttpContext.Items["User"];
-            if (!_cabinetRepository.IsIncludetUserToCabinet(message.Username, userSession.CabinetId))
-                return BadRequest("Пользователь не принадлежит кабинету");
+        //[HttpPost("send/message")]
+        //[SwaggerResponse(200, "Успешный запрос")]
+        //[SwaggerResponse(400, "Не верные данные, не возможно отправить сообщение пользователю")]
+        //[SwaggerResponse(401, "Не авторизован")]
+        //[SwaggerResponse(403, "Нет прав")]
+        //public IActionResult SendMessage(MessageRequest message)
+        //{
+        //    var userSession = (UserSession)ControllerContext.HttpContext.Items["User"];
+        //    if (!_cabinetRepository.IsIncludetUserToCabinet(message.Username, userSession.CabinetId))
+        //        return BadRequest("Пользователь не принадлежит кабинету");
 
-            _mailService.SendMessage(message);
-            return Ok();
-        }
+        //    _mailService.SendMessage(message);
+        //    return Ok();
+        //}
 
 
         /// <summary>

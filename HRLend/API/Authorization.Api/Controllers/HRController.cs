@@ -151,33 +151,33 @@ namespace AuthorizationApi.Controllers
         }
 
 
-        /// <summary>
-        /// Отправить сообщение на почту
-        /// </summary>
-        [HttpPost("send/message")]
-        [SwaggerResponse(200, "Успешный запрос")]
-        [SwaggerResponse(400, "Нет прав отправлять письмо данному пользователю")]
-        [SwaggerResponse(401, "Не авторизован")]
-        [SwaggerResponse(403, "Нет прав")]
-        public IActionResult SendMessage(MessageRequest message)
-        {
-            var userSession = (UserSession)ControllerContext.HttpContext.Items["User"];
+        ///// <summary>
+        ///// Отправить сообщение на почту
+        ///// </summary>
+        //[HttpPost("send/message")]
+        //[SwaggerResponse(200, "Успешный запрос")]
+        //[SwaggerResponse(400, "Нет прав отправлять письмо данному пользователю")]
+        //[SwaggerResponse(401, "Не авторизован")]
+        //[SwaggerResponse(403, "Нет прав")]
+        //public IActionResult SendMessage(MessageRequest message)
+        //{
+        //    var userSession = (UserSession)ControllerContext.HttpContext.Items["User"];
 
-            var recipient = _userRepository.GetUser(message.Username);
+        //    var recipient = _userRepository.GetUser(message.Username);
 
-            if (recipient != null)
-            {
-                if(userSession.CabinetId != recipient.CabinetId)
-                    return BadRequest("Пользователь не принадлежит кабинету");
-                if(!recipient.Roles.Any(r => r.Id == (int)ROLE.CABINET_CANDIDATE || r.Id == (int)ROLE.CABINET_EMPLOYEE)) 
-                    return BadRequest("Вы не можете отправлять письмо на почту данному пользователю");
+        //    if (recipient != null)
+        //    {
+        //        if(userSession.CabinetId != recipient.CabinetId)
+        //            return BadRequest("Пользователь не принадлежит кабинету");
+        //        if(!recipient.Roles.Any(r => r.Id == (int)ROLE.CABINET_CANDIDATE || r.Id == (int)ROLE.CABINET_EMPLOYEE)) 
+        //            return BadRequest("Вы не можете отправлять письмо на почту данному пользователю");
 
-                _mailService.SendMessage(message);
-                return Ok();
-            }
+        //        _mailService.SendMessage(message);
+        //        return Ok();
+        //    }
 
-            return BadRequest("Пользователь не найден");
-        }
+        //    return BadRequest("Пользователь не найден");
+        //}
 
 
         /// <summary>

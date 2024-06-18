@@ -262,6 +262,33 @@ namespace AuthorizationApi.Controllers
         }
 
 
+        /// <summary>
+        /// Отправить сообщение на почту
+        /// </summary>
+        [HttpPost("send/message")]
+        [SwaggerResponse(200, "Успешный запрос")]
+        [SwaggerResponse(400, "Нет прав отправлять письмо данному пользователю/пользователь не найден")]
+        [SwaggerResponse(401, "Не авторизован")]
+        [SwaggerResponse(403, "Нет прав")]
+        public IActionResult SendMessage(MessageRequest message)
+        {
+            var userSession = (UserSession)ControllerContext.HttpContext.Items["User"];
+
+            var recipient = _userRepository.GetUser(message.Username);
+
+            if (recipient != null)
+            {
+                if (userSession.CabinetId != recipient.CabinetId)
+                    return BadRequest("Пользователь не принадлежит кабинету");
+
+                _mailService.SendMessage(message);
+                return Ok();
+            }
+
+            return BadRequest("Пользователь не найден");
+        }
+
+
         //[HttpDelete("delete")]
         //public IActionResult Delete()
         //{
