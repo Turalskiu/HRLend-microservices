@@ -276,7 +276,9 @@ namespace TestApi.Controllers
                         res.AnonymousCandidate = new AnonymousUserShortResponse
                         {
                             FirstName = r.AnonymousCandidate.FirstName,
-                            Email = r.AnonymousCandidate.Email
+                            Email = r.AnonymousCandidate.Email,
+                            LastName = r.AnonymousCandidate.LastName,
+                            MiddleName = r.AnonymousCandidate.MiddleName
                         };
                     }
 

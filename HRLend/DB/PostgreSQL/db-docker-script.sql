@@ -2995,6 +2995,8 @@ CREATE OR REPLACE FUNCTION test.test_link_response__get_test_result_link(
 					a_u.id AS anonymous_user_id,
 					a_u.first_name AS anonymous_user_first_name,
 					a_u.email AS anonymous_user_email,
+					a_u.middle_name AS anonymous_user_middle_name,
+					a_u.last_name AS anonymous_user_last_name,
 					t_l_r.user_id AS user_id,
 					u.username AS username,
 					u.email AS user_email,

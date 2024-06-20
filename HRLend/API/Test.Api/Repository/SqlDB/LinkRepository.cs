@@ -509,7 +509,9 @@ namespace TestApi.Repository.SqlDB
                     {
                         Id = (int)anonymousUserId,
                         FirstName = record.GetN<string?>("anonymous_user_first_name"),
-                        Email = record.GetN<string?>("anonymous_user_email")
+                        Email = record.GetN<string?>("anonymous_user_email"),
+                        MiddleName = record.GetN<string?>("anonymous_user_middle_name"),
+                        LastName = record.GetN<string?>("anonymous_user_last_name")
                     };
                 }
 
