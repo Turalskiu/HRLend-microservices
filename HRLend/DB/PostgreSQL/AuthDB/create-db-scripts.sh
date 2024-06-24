@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cat /dev/null > script.sql
+cat /dev/null > init-docker/script.sql
 
 cat 'Auth\Auth.sql' >> init-docker/script.sql
 cat 'Auth\Tables\CabinetStatus.sql' >> init-docker/script.sql

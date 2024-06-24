@@ -14,17 +14,17 @@ db.test_module.insertMany([
     "rule": {
       "min_value_for_passed": 1
     },
-    "recommendations":[
+    "recommendations": [
       {
-          "title" : "metanit.com",
-          "description": "Изучение python",
-          "link": "https://metanit.com/python/fastapi/1.8.php"
+        "title": "metanit.com",
+        "description": "Изучение python",
+        "link": "https://metanit.com/python/fastapi/1.8.php"
       }
     ],
     "questions": [
       {
         "id": "ea03ec8d-4c94-43b3-1943-41d6b041d758",
-        "text": "Как дела?",
+        "text": "Какие методы анализа данных вы используете для определения потребностей клиентов?",
         "description": "c",
         "type": "radiobutton",
         "max_value": 1,
@@ -32,18 +32,18 @@ db.test_module.insertMany([
           {
             "id": "7a03ec8d-4c94-43b3-1943-41d6b041d758",
             "is_true": true,
-            "text": "Отлично!"
+            "text": "Анализ истории покупок"
           },
           {
             "id": "ea73ec8d-4c94-43b3-1943-41d6b041d758",
             "is_true": false,
-            "text": "Плохо!"
+            "text": "Анализ предпочтений клиентов"
           }
         ]
       },
       {
         "id": "ea03ec8d-4c94-43b3-1943-41d6b041d756",
-        "text": "Какие типы данных имеются в языке программирования c#?",
+        "text": "Какие инструменты вы используете для прогнозирования будущих потребностей клиентов?",
         "description": "c",
         "type": "checkbox",
         "max_value": 1,
@@ -51,17 +51,17 @@ db.test_module.insertMany([
           {
             "id": "ea03ec8d-4c04-43b3-1943-41d6b041d758",
             "is_true": false,
-            "text": "Хорошие"
+            "text": "Машинное обучение"
           },
           {
             "id": "ea03ec8d-4c94-43b3-1943-51d6b041d758",
             "is_true": true,
-            "text": "int"
+            "text": "Аналитические платформы"
           },
           {
             "id": "ea03ec8d-4994-43b3-1943-41d6b041d758",
             "is_true": true,
-            "text": "string"
+            "text": "Инструменты бизнес-аналитики"
           }
         ]
       }
@@ -79,17 +79,17 @@ db.test_module.insertMany([
     "rule": {
       "min_value_for_passed": 1
     },
-    "recommendations":[
+    "recommendations": [
       {
-          "title" : "metanit.com",
-          "description": "Изучение python",
-          "link": "https://metanit.com/python/fastapi/1.8.php"
+        "title": "metanit.com",
+        "description": "Изучение python",
+        "link": "https://metanit.com/python/fastapi/1.8.php"
       }
     ],
     "questions": [
       {
         "id": "8a03ec8d-4c94-43b3-1943-41d6b041d759",
-        "text": "Что такое HTML?",
+        "text": "Какие стратегии вы используете для обеспечения удовлетворенности клиентов вашими продуктами или услугами?",
         "description": "",
         "type": "radiobutton",
         "max_value": 1,
@@ -97,18 +97,18 @@ db.test_module.insertMany([
           {
             "id": "8a03ec8d-4c94-43b3-1943-41d6b041d760",
             "is_true": true,
-            "text": "Язык разметки"
+            "text": "Постоянное улучшение качества продуктов"
           },
           {
             "id": "8a03ec8d-4c94-43b3-1943-41d6b041d761",
             "is_true": false,
-            "text": "Язык программирования"
+            "text": "Быстрая и эффективная служба поддержки клиентов"
           }
         ]
       },
       {
         "id": "9a03ec8d-4c94-43b3-1943-41d6b041d762",
-        "text": "Что такое CSS?",
+        "text": "Какие инструменты вы используете для измерения удовлетворенности клиентов?",
         "description": "",
         "type": "radiobutton",
         "max_value": 1,
@@ -116,12 +116,12 @@ db.test_module.insertMany([
           {
             "id": "9a03ec8d-4c94-43b3-1943-41d6b041d763",
             "is_true": true,
-            "text": "Язык стилей"
+            "text": "Опросы клиентов"
           },
           {
             "id": "9a03ec8d-4c94-43b3-1943-41d6b041d764",
             "is_true": false,
-            "text": "Язык программирования"
+            "text": "Мониторинг социальных сетей"
           }
         ]
       }
@@ -139,17 +139,17 @@ db.test_module.insertMany([
     "rule": {
       "min_value_for_passed": 1
     },
-    "recommendations":[
+    "recommendations": [
       {
-          "title" : "metanit.com",
-          "description": "Изучение python",
-          "link": "https://metanit.com/python/fastapi/1.8.php"
+        "title": "metanit.com",
+        "description": "Изучение python",
+        "link": "https://metanit.com/python/fastapi/1.8.php"
       }
     ],
     "questions": [
       {
         "id": "8a03ec8d-4c94-43b3-1943-41d6b041d759",
-        "text": "Что такое Python?",
+        "text": "Какие стандарты обслуживания клиентов применяются в вашей компании для обеспечения высокого уровня удовлетворенности?",
         "description": "",
         "type": "radiobutton",
         "max_value": 1,
@@ -157,18 +157,18 @@ db.test_module.insertMany([
           {
             "id": "8a03ec8d-4c94-43b3-1943-41d6b041d760",
             "is_true": true,
-            "text": "Язык программирования"
+            "text": "Стандарты времени ответа на запросы"
           },
           {
             "id": "8a03ec8d-4c94-43b3-1943-41d6b041d761",
             "is_true": false,
-            "text": "Язык разметки"
+            "text": "Стандарты качества обслуживания"
           }
         ]
       },
       {
         "id": "9a03ec8d-4c94-43b3-1943-41d6b041d762",
-        "text": "Что такое JavaScript?",
+        "text": "Какие инструменты и методы вы используете для мониторинга соблюдения стандартов обслуживания клиентов?",
         "description": "",
         "type": "radiobutton",
         "max_value": 1,
@@ -176,12 +176,12 @@ db.test_module.insertMany([
           {
             "id": "9a03ec8d-4c94-43b3-1943-41d6b041d763",
             "is_true": true,
-            "text": "Язык программирования"
+            "text": "Регулярные аудиты и проверки"
           },
           {
             "id": "9a03ec8d-4c94-43b3-1943-41d6b041d764",
             "is_true": false,
-            "text": "Язык стилей"
+            "text": "Сбор и анализ обратной связи от клиентов"
           }
         ]
       }
@@ -199,17 +199,17 @@ db.test_module.insertMany([
     "rule": {
       "min_value_for_passed": 1
     },
-    "recommendations":[
+    "recommendations": [
       {
-          "title" : "metanit.com",
-          "description": "Изучение python",
-          "link": "https://metanit.com/python/fastapi/1.8.php"
+        "title": "metanit.com",
+        "description": "Изучение python",
+        "link": "https://metanit.com/python/fastapi/1.8.php"
       }
     ],
     "questions": [
       {
         "id": "9a03ec8d-4c94-43b3-1943-41d6b041d762",
-        "text": "Что такое Java?",
+        "text": "Какие техники вы используете для быстрого установления контакта с новыми людьми?",
         "description": "",
         "type": "radiobutton",
         "max_value": 1,
@@ -217,12 +217,12 @@ db.test_module.insertMany([
           {
             "id": "9a03ec8d-4c94-43b3-1943-41d6b041d763",
             "is_true": true,
-            "text": "Язык программирования"
+            "text": "Активное слушание"
           },
           {
             "id": "9a03ec8d-4c94-43b3-1943-41d6b041d764",
             "is_true": false,
-            "text": "Язык стилей"
+            "text": "Использование общих интересов"
           }
         ]
       }
@@ -240,17 +240,17 @@ db.test_module.insertMany([
     "rule": {
       "min_value_for_passed": 1
     },
-    "recommendations":[
+    "recommendations": [
       {
-          "title" : "metanit.com",
-          "description": "Изучение python",
-          "link": "https://metanit.com/python/fastapi/1.8.php"
+        "title": "metanit.com",
+        "description": "Изучение python",
+        "link": "https://metanit.com/python/fastapi/1.8.php"
       }
     ],
     "questions": [
       {
         "id": "8a03ec8d-4c94-43b3-1943-41d6b041d765",
-        "text": "Что такое JSON?",
+        "text": "Какие техники активного слушания вы применяете в разговоре?",
         "description": "",
         "type": "radiobutton",
         "max_value": 1,
@@ -258,18 +258,18 @@ db.test_module.insertMany([
           {
             "id": "8a03ec8d-4c94-43b3-1943-41d6b041d766",
             "is_true": true,
-            "text": "Формат передачи данных"
+            "text": "Задавание уточняющих вопросов"
           },
           {
             "id": "8a03ec8d-4c94-43b3-1943-41d6b041d767",
             "is_true": false,
-            "text": "Язык программирования"
+            "text": "Парафраз (пересказ сказанного)"
           }
         ]
       },
       {
         "id": "9a03ec8d-4c94-43b3-1943-41d6b041d768",
-        "text": "Что такое API?",
+        "text": "Как вы демонстрируете собеседнику, что вы его внимательно слушаете?",
         "description": "",
         "type": "radiobutton",
         "max_value": 1,
@@ -277,12 +277,12 @@ db.test_module.insertMany([
           {
             "id": "9a03ec8d-4c94-43b3-1943-41d6b041d769",
             "is_true": true,
-            "text": "Интерфейс программирования приложений"
+            "text": "Установление зрительного контакта"
           },
           {
             "id": "9a03ec8d-4c94-43b3-1943-41d6b041d770",
             "is_true": false,
-            "text": "Язык разметки"
+            "text": "Подтверждающие реплики (например, 'да', 'понятно')"
           }
         ]
       }
@@ -300,17 +300,17 @@ db.test_module.insertMany([
     "rule": {
       "min_value_for_passed": 1
     },
-    "recommendations":[
+    "recommendations": [
       {
-          "title" : "metanit.com",
-          "description": "Изучение python",
-          "link": "https://metanit.com/python/fastapi/1.8.php"
+        "title": "metanit.com",
+        "description": "Изучение python",
+        "link": "https://metanit.com/python/fastapi/1.8.php"
       }
     ],
     "questions": [
       {
         "id": "1",
-        "text": "Какой самый популярный язык программирования?",
+        "text": "Какие методы вы используете, чтобы ясно и четко выражать свои мысли в разговоре?",
         "description": "",
         "type": "radiobutton",
         "max_value": 1,
@@ -318,12 +318,12 @@ db.test_module.insertMany([
           {
             "id": "1",
             "is_true": true,
-            "text": "JavaScript"
+            "text": "Использование простых и понятных слов"
           },
           {
             "id": "2",
             "is_true": false,
-            "text": "Python"
+            "text": "Структурирование своих мыслей перед началом разговора"
           }
         ]
       }
@@ -341,17 +341,17 @@ db.test_module.insertMany([
     "rule": {
       "min_value_for_passed": 1
     },
-    "recommendations":[
+    "recommendations": [
       {
-          "title" : "metanit.com",
-          "description": "Изучение python",
-          "link": "https://metanit.com/python/fastapi/1.8.php"
+        "title": "metanit.com",
+        "description": "Изучение python",
+        "link": "https://metanit.com/python/fastapi/1.8.php"
       }
     ],
     "questions": [
       {
         "id": "1",
-        "text": "Вопрос 1",
+        "text": "Какие методы вы используете, чтобы лучше понять чувства и эмоции других людей?",
         "description": "",
         "type": "radiobutton",
         "max_value": 1,
@@ -359,18 +359,18 @@ db.test_module.insertMany([
           {
             "id": "1",
             "is_true": true,
-            "text": "Верный ответ"
+            "text": "Активное слушание и задавание вопросов"
           },
           {
             "id": "2",
             "is_true": false,
-            "text": "Неверный ответ"
+            "text": "Наблюдение за невербальными сигналами"
           }
         ]
       },
       {
         "id": "2",
-        "text": "Вопрос 2",
+        "text": "Как вы демонстрируете свою эмпатию к другим людям?",
         "description": "",
         "type": "radiobutton",
         "max_value": 1,
@@ -378,12 +378,12 @@ db.test_module.insertMany([
           {
             "id": "3",
             "is_true": true,
-            "text": "Верный ответ"
+            "text": "Слушаю внимательно, не перебивая"
           },
           {
             "id": "4",
             "is_true": false,
-            "text": "Неверный ответ"
+            "text": "Использую выражения, показывающие сочувствие (например, 'Я понимаю, как вам трудно')"
           }
         ]
       }
@@ -401,17 +401,17 @@ db.test_module.insertMany([
     "rule": {
       "min_value_for_passed": 1
     },
-    "recommendations":[
+    "recommendations": [
       {
-          "title" : "metanit.com",
-          "description": "Изучение python",
-          "link": "https://metanit.com/python/fastapi/1.8.php"
+        "title": "metanit.com",
+        "description": "Изучение python",
+        "link": "https://metanit.com/python/fastapi/1.8.php"
       }
     ],
     "questions": [
       {
         "id": "1",
-        "text": "Какая самая большая планета в Солнечной системе?",
+        "text": "Каким образом вы планируете свое ежедневное расписание?",
         "description": "",
         "type": "radiobutton",
         "max_value": 1,
@@ -419,23 +419,23 @@ db.test_module.insertMany([
           {
             "id": "1",
             "is_true": true,
-            "text": "Юпитер"
+            "text": "Использую ежедневные списки дел"
           },
           {
             "id": "2",
             "is_true": false,
-            "text": "Марс"
+            "text": "Планирую задачи в календаре"
           },
           {
             "id": "3",
             "is_true": false,
-            "text": "Земля"
+            "text": "Ставлю приоритеты для выполнения задач"
           }
         ]
       },
       {
         "id": "2",
-        "text": "Что такое Черная дыра?",
+        "text": "Как вы обеспечиваете баланс между работой и личной жизнью при планировании своего расписания?",
         "description": "",
         "type": "radiobutton",
         "max_value": 1,
@@ -443,17 +443,17 @@ db.test_module.insertMany([
           {
             "id": "4",
             "is_true": true,
-            "text": "Область пространства с экстремально сильным гравитационным полем"
+            "text": "Ставлю конкретные временные рамки для работы и отдыха"
           },
           {
             "id": "5",
             "is_true": false,
-            "text": "Сверхновая звезда"
+            "text": "Регулярно делаю перерывы и планирую время для семьи и хобби"
           },
           {
             "id": "6",
             "is_true": false,
-            "text": "Туманность"
+            "text": "Использую методы эффективного временного управления"
           }
         ]
       }
@@ -471,17 +471,17 @@ db.test_module.insertMany([
     "rule": {
       "min_value_for_passed": 1
     },
-    "recommendations":[
+    "recommendations": [
       {
-          "title" : "metanit.com",
-          "description": "Изучение python",
-          "link": "https://metanit.com/python/fastapi/1.8.php"
+        "title": "metanit.com",
+        "description": "Изучение python",
+        "link": "https://metanit.com/python/fastapi/1.8.php"
       }
     ],
     "questions": [
       {
         "id": "1",
-        "text": "Кто исполнил главную роль в фильме 'Терминатор 2: Судный день'?",
+        "text": "Какие критерии вы учитываете при делегировании задач другим сотрудникам?",
         "description": "",
         "type": "radiobutton",
         "max_value": 1,
@@ -489,23 +489,23 @@ db.test_module.insertMany([
           {
             "id": "1",
             "is_true": true,
-            "text": "Арнольд Шварценеггер"
+            "text": "Уровень компетенции и опыта сотрудника в данной области"
           },
           {
             "id": "2",
             "is_true": false,
-            "text": "Сильвестр Сталлоне"
+            "text": "Личные предпочтения и отношения с сотрудником"
           },
           {
             "id": "3",
             "is_true": false,
-            "text": "Брюс Уиллис"
+            "text": "Сложность задачи и сроки выполнения"
           }
         ]
       },
       {
         "id": "2",
-        "text": "Как называется робот, который играет важную роль в фильме 'Терминатор 2: Судный день'?",
+        "text": "Как вы обеспечиваете эффективное выполнение делегированных задач?",
         "description": "",
         "type": "radiobutton",
         "max_value": 1,
@@ -513,17 +513,17 @@ db.test_module.insertMany([
           {
             "id": "4",
             "is_true": true,
-            "text": "Т-800"
+            "text": "Устанавливаю четкие цели и ожидания перед делегированием"
           },
           {
             "id": "5",
             "is_true": false,
-            "text": "R2-D2"
+            "text": "Регулярно проверяю прогресс выполнения задач"
           },
           {
             "id": "6",
             "is_true": false,
-            "text": "C-3PO"
+            "text": "Все вышеперечисленное"
           }
         ]
       }
@@ -541,17 +541,17 @@ db.test_module.insertMany([
     "rule": {
       "min_value_for_passed": 1
     },
-    "recommendations":[
+    "recommendations": [
       {
-          "title" : "metanit.com",
-          "description": "Изучение python",
-          "link": "https://metanit.com/python/fastapi/1.8.php"
+        "title": "metanit.com",
+        "description": "Изучение python",
+        "link": "https://metanit.com/python/fastapi/1.8.php"
       }
     ],
     "questions": [
       {
         "id": "1",
-        "text": "Кто режиссировал фильм 'Трансформеры'?",
+        "text": "Каким образом вы определяете важность задач перед их выполнением?",
         "description": "",
         "type": "radiobutton",
         "max_value": 1,
@@ -559,23 +559,23 @@ db.test_module.insertMany([
           {
             "id": "1",
             "is_true": true,
-            "text": "Майкл Бэй"
+            "text": "Оцениваю влияние задачи на достижение целей и срочность выполнения"
           },
           {
             "id": "2",
             "is_true": false,
-            "text": "Кристофер Нолан"
+            "text": "Исходя из личных предпочтений и интересов"
           },
           {
             "id": "3",
             "is_true": false,
-            "text": "Питер Джексон"
+            "text": "Следую за указаниями руководителя или приоритизации из отчетности"
           }
         ]
       },
       {
         "id": "2",
-        "text": "Как называется главный герой-робот в фильме 'Трансформеры'?",
+        "text": "Как вы обеспечиваете соблюдение установленных приоритетов в ходе выполнения задач?",
         "description": "",
         "type": "radiobutton",
         "max_value": 1,
@@ -583,17 +583,17 @@ db.test_module.insertMany([
           {
             "id": "4",
             "is_true": true,
-            "text": "Оптимус Прайм"
+            "text": "Регулярно переоцениваю приоритеты и делаю необходимые корректировки"
           },
           {
             "id": "5",
             "is_true": false,
-            "text": "Бамблби"
+            "text": "Получаю обратную связь от коллег для проверки соответствия"
           },
           {
             "id": "6",
             "is_true": false,
-            "text": "Мегатрон"
+            "text": "Все вышеперечисленное"
           }
         ]
       }
@@ -611,17 +611,17 @@ db.test_module.insertMany([
     "rule": {
       "min_value_for_passed": 1
     },
-    "recommendations":[
+    "recommendations": [
       {
-          "title" : "metanit.com",
-          "description": "Изучение python",
-          "link": "https://metanit.com/python/fastapi/1.8.php"
+        "title": "metanit.com",
+        "description": "Изучение python",
+        "link": "https://metanit.com/python/fastapi/1.8.php"
       }
     ],
     "questions": [
       {
         "id": "1",
-        "text": "Какая команда выиграла NBA в сезоне 2020-2021?",
+        "text": "Каким образом вы структурируете свои цели перед их достижением?",
         "description": "",
         "type": "radiobutton",
         "max_value": 1,
@@ -629,23 +629,23 @@ db.test_module.insertMany([
           {
             "id": "1",
             "is_true": true,
-            "text": "Милуоки Бакс"
+            "text": "Разбиваю цели на более мелкие задачи с конкретными сроками выполнения"
           },
           {
             "id": "2",
             "is_true": false,
-            "text": "Лос-Анджелес Лейкерс"
+            "text": "Зависит от текущей ситуации и настроения"
           },
           {
             "id": "3",
             "is_true": false,
-            "text": "Голден Стэйт Уорриорз"
+            "text": "Все вышеперечисленное"
           }
         ]
       },
       {
         "id": "2",
-        "text": "Кто является лучшим снайпером в истории NBA?",
+        "text": "Как вы планируете выполнение структурированных задач?",
         "description": "",
         "type": "radiobutton",
         "max_value": 1,
@@ -653,17 +653,17 @@ db.test_module.insertMany([
           {
             "id": "4",
             "is_true": true,
-            "text": "Рэй Аллен"
+            "text": "Устанавливаю приоритеты и сроки для каждой мелкой задачи"
           },
           {
             "id": "5",
             "is_true": false,
-            "text": "Леброн Джеймс"
+            "text": "Просто начинаю выполнять задачи без предварительного планирования"
           },
           {
             "id": "6",
             "is_true": false,
-            "text": "Майкл Джордан"
+            "text": "Доверяю интуиции и естественному ходу вещей"
           }
         ]
       }
@@ -681,17 +681,17 @@ db.test_module.insertMany([
     "rule": {
       "min_value_for_passed": 1
     },
-    "recommendations":[
+    "recommendations": [
       {
-          "title" : "metanit.com",
-          "description": "Изучение python",
-          "link": "https://metanit.com/python/fastapi/1.8.php"
+        "title": "metanit.com",
+        "description": "Изучение python",
+        "link": "https://metanit.com/python/fastapi/1.8.php"
       }
     ],
     "questions": [
       {
         "id": "1",
-        "text": "Какая команда выиграла Чемпионат мира по футболу в 2018 году?",
+        "text": "Какими техниками вы пользуетесь для снижения стресса на работе?",
         "description": "",
         "type": "radiobutton",
         "max_value": 1,
@@ -699,23 +699,23 @@ db.test_module.insertMany([
           {
             "id": "1",
             "is_true": true,
-            "text": "Сборная Франции"
+            "text": "Практикую дыхательные упражнения и медитацию в течение дня"
           },
           {
             "id": "2",
             "is_true": false,
-            "text": "Сборная Аргентины"
+            "text": "Отдыхаю, общаясь с коллегами в свободное время"
           },
           {
             "id": "3",
             "is_true": false,
-            "text": "Сборная Бразилии"
+            "text": "Использую развлекательные приложения на смартфоне"
           }
         ]
       },
       {
         "id": "2",
-        "text": "Какой игрок сборной Бразилии известен как 'Феномен'?",
+        "text": "Как вы оцениваете эффективность выбранных вами техник борьбы со стрессом?",
         "description": "",
         "type": "radiobutton",
         "max_value": 1,
@@ -723,17 +723,17 @@ db.test_module.insertMany([
           {
             "id": "4",
             "is_true": true,
-            "text": "Роналдо"
+            "text": "Заметно улучшаю свою концентрацию и общее состояние техник"
           },
           {
             "id": "5",
             "is_true": false,
-            "text": "Роналдиньо"
+            "text": "Ощущаю временное облегчение но не всегда достигаю результатов"
           },
           {
             "id": "6",
             "is_true": false,
-            "text": "Пеле"
+            "text": "Не замечаю значимых изменений после использования техник"
           }
         ]
       }
@@ -751,17 +751,17 @@ db.test_module.insertMany([
     "rule": {
       "min_value_for_passed": 1
     },
-    "recommendations":[
+    "recommendations": [
       {
-          "title" : "metanit.com",
-          "description": "Изучение python",
-          "link": "https://metanit.com/python/fastapi/1.8.php"
+        "title": "metanit.com",
+        "description": "Изучение python",
+        "link": "https://metanit.com/python/fastapi/1.8.php"
       }
     ],
     "questions": [
       {
         "id": "1",
-        "text": "Какая страна выиграла золотую медаль на Олимпийских играх по волейболу у мужчин в 2016 году?",
+        "text": "Каким образом вы управляете своими эмоциями в стрессовых ситуациях?",
         "description": "",
         "type": "radiobutton",
         "max_value": 1,
@@ -769,23 +769,23 @@ db.test_module.insertMany([
           {
             "id": "1",
             "is_true": true,
-            "text": "Бразилия"
+            "text": "Использую методы дыхательной практики для снятия напряжения"
           },
           {
             "id": "2",
             "is_true": false,
-            "text": "Россия"
+            "text": "Позволяю эмоциям влиять на принятие решений"
           },
           {
             "id": "3",
             "is_true": false,
-            "text": "США"
+            "text": "Ищу поддержку и советы у коллег или друзей"
           }
         ]
       },
       {
         "id": "2",
-        "text": "Какое количество игроков находится на поле у каждой команды в волейболе?",
+        "text": "Как вы контролируете свои реакции на критику или неожиданные изменения в работе?",
         "description": "",
         "type": "radiobutton",
         "max_value": 1,
@@ -793,17 +793,17 @@ db.test_module.insertMany([
           {
             "id": "4",
             "is_true": true,
-            "text": "6"
+            "text": "Анализирую информацию, прежде чем отвечать"
           },
           {
             "id": "5",
             "is_true": false,
-            "text": "7"
+            "text": "Реагирую эмоционально и часто показываю свои эмоции"
           },
           {
             "id": "6",
             "is_true": false,
-            "text": "5"
+            "text": "Все вышеперечисленное"
           }
         ]
       }
@@ -821,17 +821,17 @@ db.test_module.insertMany([
     "rule": {
       "min_value_for_passed": 1
     },
-    "recommendations":[
+    "recommendations": [
       {
-          "title" : "metanit.com",
-          "description": "Изучение python",
-          "link": "https://metanit.com/python/fastapi/1.8.php"
+        "title": "metanit.com",
+        "description": "Изучение python",
+        "link": "https://metanit.com/python/fastapi/1.8.php"
       }
     ],
     "questions": [
       {
         "id": "1",
-        "text": "В каком году была образована СССР?",
+        "text": "Каким образом вы анализируете стрессовые ситуации на работе?",
         "description": "",
         "type": "radiobutton",
         "max_value": 1,
@@ -839,23 +839,23 @@ db.test_module.insertMany([
           {
             "id": "1",
             "is_true": true,
-            "text": "1922"
+            "text": "Оцениваю факторы, вызывающие стресс"
           },
           {
             "id": "2",
             "is_true": false,
-            "text": "1917"
+            "text": "Просто переношу стресс без анализа его причин"
           },
           {
             "id": "3",
             "is_true": false,
-            "text": "1945"
+            "text": "Ищу поддержку у коллег, не задумываясь о причинах стресса"
           }
         ]
       },
       {
         "id": "2",
-        "text": "Кто был первым президентом СССР?",
+        "text": "Как вы определяете, какие ситуации могут стать потенциально стрессовыми для вас?",
         "description": "",
         "type": "radiobutton",
         "max_value": 1,
@@ -863,17 +863,17 @@ db.test_module.insertMany([
           {
             "id": "4",
             "is_true": true,
-            "text": "Михаил Горбачёв"
+            "text": "Анализирую прошлые опыты"
           },
           {
             "id": "5",
             "is_true": false,
-            "text": "Иосиф Сталин"
+            "text": "Реагирую на стрессовые ситуации в момент"
           },
           {
             "id": "6",
             "is_true": false,
-            "text": "Владимир Ленин"
+            "text": "Не обращаю внимания на потенциально стрессовые ситуации"
           }
         ]
       }
@@ -891,17 +891,17 @@ db.test_module.insertMany([
     "rule": {
       "min_value_for_passed": 1
     },
-    "recommendations":[
+    "recommendations": [
       {
-          "title" : "metanit.com",
-          "description": "Изучение python",
-          "link": "https://metanit.com/python/fastapi/1.8.php"
+        "title": "metanit.com",
+        "description": "Изучение python",
+        "link": "https://metanit.com/python/fastapi/1.8.php"
       }
     ],
     "questions": [
       {
         "id": "1",
-        "text": "Какое событие в истории США произошло 4 июля 1776 года?",
+        "text": "Как вы организуете свою работу, когда у вас есть несколько приоритетных задач?",
         "description": "",
         "type": "radiobutton",
         "max_value": 1,
@@ -909,23 +909,23 @@ db.test_module.insertMany([
           {
             "id": "1",
             "is_true": true,
-            "text": "Декларация независимости"
+            "text": "Распределяю время и приоритеты, делаю план действий для каждой задачи"
           },
           {
             "id": "2",
             "is_true": false,
-            "text": "Война за независимость"
+            "text": "Решаю задачи в порядке их поступления без учета приоритетов"
           },
           {
             "id": "3",
             "is_true": false,
-            "text": "Открытие первого парка развлечений"
+            "text": "Сосредотачиваюсь на одной задаче"
           }
         ]
       },
       {
         "id": "2",
-        "text": "Кто был первым президентом США?",
+        "text": "Как вы управляете своим временем, когда на работе возникает несколько срочных задач одновременно?",
         "description": "",
         "type": "radiobutton",
         "max_value": 1,
@@ -933,17 +933,17 @@ db.test_module.insertMany([
           {
             "id": "4",
             "is_true": true,
-            "text": "Джордж Вашингтон"
+            "text": "Устанавливаю приоритеты для каждой задачи"
           },
           {
             "id": "5",
             "is_true": false,
-            "text": "Томас Джефферсон"
+            "text": "Решаю задачи в хаотичном порядке, в зависимости от текущего настроения"
           },
           {
             "id": "6",
             "is_true": false,
-            "text": "Авраам Линкольн"
+            "text": "Делегирую большую часть задач коллегам"
           }
         ]
       }
@@ -961,17 +961,17 @@ db.test_module.insertMany([
     "rule": {
       "min_value_for_passed": 1
     },
-    "recommendations":[
+    "recommendations": [
       {
-          "title" : "metanit.com",
-          "description": "Изучение python",
-          "link": "https://metanit.com/python/fastapi/1.8.php"
+        "title": "metanit.com",
+        "description": "Изучение python",
+        "link": "https://metanit.com/python/fastapi/1.8.php"
       }
     ],
     "questions": [
       {
         "id": "1",
-        "text": "Что такое акция?",
+        "text": "Как вы обычно готовитесь к выполнению задач в жестких дедлайнах?",
         "description": "",
         "type": "radiobutton",
         "max_value": 1,
@@ -1031,11 +1031,11 @@ db.test_module.insertMany([
     "rule": {
       "min_value_for_passed": 1
     },
-    "recommendations":[
+    "recommendations": [
       {
-          "title" : "metanit.com",
-          "description": "Изучение python",
-          "link": "https://metanit.com/python/fastapi/1.8.php"
+        "title": "metanit.com",
+        "description": "Изучение python",
+        "link": "https://metanit.com/python/fastapi/1.8.php"
       }
     ],
     "questions": [
